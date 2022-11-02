@@ -1,57 +1,41 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import Link from 'next/link'
+import { format } from 'date-fns'
+
+import Vercel from './Vercel'
+import Copyright from './Copyright'
+import { getAllPosts } from '../utils/mdx'
 
 export default function Home() {
+  const posts = getAllPosts(['slug', 'title', 'date'])
+
   return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js 13!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://beta.nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js 13</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Explore the Next.js 13 playground.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates/next.js/app-directory?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>Deploy your Next.js site to a public URL with Vercel.</p>
-          </a>
+    <main className="mx-auto max-w-prose px-4">
+      <div className="py-8">
+        <h1 className="text-center text-3xl font-bold">{`Koshi Matsumoto's website`}</h1>
+        <div className="mt-1">
+          <div className="text-center text-sm text-slate-400">
+            <Copyright />
+          </div>
+          <div>
+            <Vercel />
+          </div>
         </div>
-      </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
-    </div>
+        <article className="mt-8">
+          {posts.map((post) => (
+            <article key={post.slug} className="border-t border-slate-200 py-4">
+              <h2 className="text-2xl">
+                <Link href={`/blog/${post.slug}`} className="hover:underline">
+                  {post.title}
+                </Link>
+              </h2>
+              <time dateTime={post.date} className="text-sm text-slate-400">
+                {format(new Date(post.date), 'yyyy MMM dd')}
+              </time>
+            </article>
+          ))}
+        </article>
+      </div>
+    </main>
   )
 }

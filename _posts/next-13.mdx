@@ -1,0 +1,830 @@
+---
+title: Next.js 13 要点
+description: Next.js 13 Beta ドキュメントの要点をまとめてみた。
+date: '2022-10-30'
+---
+
+この記事は、[Next.js 13 Beta Docs](https://beta.nextjs.org/docs) の要点をまとめて日本語に翻訳したものです（一部、他ドキュメントの情報あり）。翻訳ツールの出力をそのまま使用しているので、不自然な表現があるかもしれません。どうぞご了承ください。
+
+## Getting Started
+
+`app` ディレクトリを使用して新しい Next.js プロジェクトを自動的に作成するには:
+
+```bash
+npx create-next-app@latest --experimental-app
+```
+
+`create-next-app` はデフォルトで TypeScript に同梱されるようになりました。
+
+[Getting Started](https://beta.nextjs.org/docs/getting-started)
+
+## Routing Fundamentals
+
+### The `app` Directory
+
+新しいルーターは、`app` という名前の新しいディレクトリで動作します。`app` ディレクトリは `pages` ディレクトリと連携して、段階的な採用を可能にします。`app` ディレクトリ内のルートは、`pages` 内のルートよりも優先されます。これは、同じパスを持つ 2 つのルートがある場合、`app` ディレクトリ内のルートがレンダリングされることを意味します。
+
+[The `app` Directory](https://beta.nextjs.org/docs/routing/fundamentals#the-app-directory)
+
+### Special Files
+
+`js`、`jsx`、または `tsx` ファイル拡張子は、特別なファイルに使用できます。`ts` は現在サポートされていません。
+
+[Special Files](https://beta.nextjs.org/docs/routing/fundamentals#special-files)
+
+### Server-Centric Routing with Client-side Navigation
+
+ルーティングはサーバー中心ですが、ルーターはリンク コンポーネントを使用してクライアント側のナビゲーションを使用し、シングル ページ アプリケーションの動作に似ています。これは、ユーザーが新しいルートに移動したときに、ブラウザーがページをリロードしないことを意味します。代わりに、URL が更新され、Next.js は変更されたセグメントのみをレンダリングします。
+
+さらに、ユーザーがアプリ内を移動すると、ルーターは React サーバー コンポーネント ペイロードの結果をメモリ内のクライアント側キャッシュに保存します。
+
+[Server-Centric Routing with Client-side Navigation](https://beta.nextjs.org/docs/routing/fundamentals#server-centric-routing-with-client-side-navigation)
+
+### Partial Rendering
+
+兄弟ルート間を移動する場合、Next.js は変更されたルート内のレイアウトとページのみを取得してレンダリングします。サブツリーのセグメントより上にあるものは再取得または再レンダリングされません。これは、レイアウトを共有するルートでは、ユーザーが兄弟ページ間を移動するときにレイアウトが保持されることを意味します。
+
+[Partial Rendering](https://beta.nextjs.org/docs/routing/fundamentals#partial-rendering)
+
+## Defining Routes
+
+### Route Groups
+
+ルート グループは、フォルダの名前を括弧で囲むことによって作成できます: `(folderName)`
+
+**知っておくと便利:**
+
+- ルート グループの命名には、編成以外に特別な意味はありません。URL パスには影響しません。
+- ルート グループ内のルートは、同じ URL パスに解決されるべきではありません。たとえば、ルート グループは URL 構造に影響を与えないため、`(marketing)/about/page.js` と `(shop)/about/page.js` の組み合わせは両方とも `/about` に解決され、エラーが発生します。
+
+[Route Groups](https://beta.nextjs.org/docs/routing/defining-routes#route-groups)
+
+### Dynamic Segments
+
+たとえば、ブログ投稿の場合、次のルート `app/blog/[slug]/page.js` を作成できます。`[slug]` はダイナミック セグメントです。
+
+[Dynamic Segments](https://beta.nextjs.org/docs/routing/defining-routes#dynamic-segments)
+
+## Pages and Layouts
+
+### Pages
+
+- ルート セグメントを公開するには、`page.js` ファイルが必要です。
+- ページはデフォルトでサーバー コンポーネントですが、クライアント コンポーネントに設定できます。
+- ページには、`js`、`jsx`、または `tsx` ファイル拡張子を使用できます。
+
+[Pages](https://beta.nextjs.org/docs/routing/pages-and-layouts#pages)
+
+### Layouts
+
+レイアウトは、複数のページ間で共有される UI です。ナビゲーションでは、レイアウトは状態を維持し、インタラクティブなままで、再レンダリングしません。ルート階層に従って、レイアウトもネストされます。
+
+**知っておくと便利:**
+
+- 最上位のレイアウトはルート レイアウトと呼ばれます。これは、アプリケーション内のすべてのページで共有される必須のレイアウトです。`html`、`head`、および `body` タグを含める必要があります。
+- どのルート セグメントでも、必要に応じて独自のレイアウトを定義できます。これらのレイアウトは、セグメント内のすべてのページで共有されます。
+- ルート内のレイアウトは、デフォルトでネストされています。各祖先レイアウトは、`children` を使用してその下のレイアウトをラップします。
+- レイアウトはデフォルトでサーバー コンポーネントですが、クライアント コンポーネントに設定できます。
+- `js`、`jsx`、または `tsx` ファイル拡張子をレイアウトに使用できます。
+- `layout.js` と `page.js` ファイルは、同じフォルダーで定義できます。レイアウトはページをラップします。
+
+[Layouts](https://beta.nextjs.org/docs/routing/pages-and-layouts#layouts)
+
+#### Root Layout (必須)
+
+- `app` ディレクトリには、ルート レイアウトが含まれている必要があります。
+- Next.js が自動的に作成しないため、ルート レイアウトは `<html>` および `<body>` タグを定義する必要があります。`<head>` タグはオプションです。
+
+> **Next.js 12 からの移行:** ルート レイアウトは `_app.js` および `_document.js` ファイルを置き換えます。
+
+[Root Layout (Required)
+](https://beta.nextjs.org/docs/routing/pages-and-layouts#root-layout-required)
+
+#### Nesting Layouts
+
+他のすべてのレイアウトは、特定のルート セグメントに対して定義され、それらのセグメントがアクティブなときにレンダリングされます。デフォルトでは、ファイル階層内のレイアウトはネストされています。つまり、`children` プロパティを介して子レイアウトをラップします。
+
+[Nesting Layouts](https://beta.nextjs.org/docs/routing/pages-and-layouts#nesting-layouts)
+
+### Templates
+
+テンプレートは、各子レイアウトまたはページをラップするという点でレイアウトに似ています。ルート間で持続し、状態を維持するレイアウトとは異なり、テンプレートは、ナビゲーション時にそれぞれの子の新しいインスタンスを作成します。これは、ユーザーがテンプレートを共有するルート間を移動すると、コンポーネントの新しいインスタンスがマウントされ、DOM 要素が再作成され、状態が保持されず、効果が再同期されることを意味します。
+
+これらの特定の動作が必要な場合があり、テンプレートはレイアウトよりも適切なオプションです。例えば：
+
+- CSS またはアニメーション ライブラリを使用してアニメーションを開始/終了します。
+- `useEffect` (例: ページ ビューのログ記録) と `useState` (例: ページごとのフィードバック フォーム) に依存する機能。
+- デフォルトのフレームワークの動作を変更する。たとえば、レイアウト内の Suspense Boundaries は、レイアウトが最初に読み込まれたときにのみフォールバックを表示し、ページを切り替えるときは表示しません。テンプレートの場合、フォールバックは各ナビゲーションに表示されます。
+
+> **推奨事項:** テンプレートを使用する特別な理由がない限り、レイアウトを使用することをお勧めします。
+
+[Templates](https://beta.nextjs.org/docs/routing/pages-and-layouts#templates)
+
+### Modifying `<head>`
+
+`app` ディレクトリで、新しい特別な `head.js` ファイルを使用して `<head>` タグを変更できます。これは、`pages` ディレクトリの `next/head` を置き換えます。
+
+[Modifying `<head>`](https://beta.nextjs.org/docs/routing/pages-and-layouts#modifying-head)
+
+## Linking and Navigating
+
+### `<Link>` Component
+
+`<Link>` は、ルート間のプリフェッチとクライアント側のナビゲーションを提供するために HTML の `<a>` 要素を拡張する React コンポーネントです。Next.js でルート間を移動する主な方法です。
+
+```tsx
+import Link from 'next/link'
+
+export default function Page() {
+  return <Link href="/dashboard">Dashboard</Link>
+}
+```
+
+[`<Link>` Component](https://beta.nextjs.org/docs/routing/linking-and-navigating#link-component)
+
+### `useRouter()` Hook
+
+`useRouter` フックを使用すると、クライアント コンポーネント内のルートをプログラムで変更できます。
+
+`useRouter` を使用するには、`next/navigation` からインポートし、クライアント コンポーネント内でフックを呼び出します。
+
+```tsx
+'use client'
+
+import { useRouter } from 'next/navigation'
+
+export default function Page() {
+  const router = useRouter()
+
+  return (
+    <button type="button" onClick={() => router.push('/dashboard')}>
+      Dashboard
+    </button>
+  )
+}
+```
+
+> 推奨事項: `useRouter` を使用するための特定の要件がない限り、`<Link>` コンポーネントを使用してルート間を移動します。
+
+[`useRouter()` Hook](https://beta.nextjs.org/docs/routing/linking-and-navigating#userouter-hook)
+
+## Rendering Fundamentals
+
+### Component-level Client and Server Rendering
+
+現在、サーバー コンポーネントとクライアント コンポーネントを使用すると、React はクライアントとサーバーでレンダリングできます。つまり、コンポーネント レベルでレンダリング環境を選択できます。デフォルトでは、`app` ディレクトリはサーバー コンポーネントを使用するため、サーバー上でコンポーネントを簡単にレンダリングし、クライアントに送信される JavaScript の量を減らすことができます。ただし、`app` 内でクライアント コンポーネントを使用し、クライアントでレンダリングするオプションがあります。
+
+[Component-level Client and Server Rendering](https://beta.nextjs.org/docs/rendering/fundamentals#component-level-client-and-server-rendering)
+
+### Static and Dynamic Rendering on the Server
+
+#### Static Rendering
+
+静的レンダリングを使用すると、ビルド時にサーバー コンポーネントとクライアント コンポーネントの両方をサーバー上で事前にレンダリングできます。作業の結果はキャッシュされ、後続のリクエストで再利用されます。キャッシュされた結果は、再検証することもできます。
+
+> **注:** これは、静的サイト生成 (SSG) および増分静的再生成 (ISR) に相当します。
+
+[Static Rendering](https://beta.nextjs.org/docs/rendering/fundamentals#static-rendering)
+
+#### Dynamic Rendering
+
+動的レンダリングでは、サーバー コンポーネントとクライアント コンポーネントの両方が、要求時にサーバー上でレンダリングされます。作業の結果はキャッシュされません。
+
+> **注:** これは、サーバー側のレンダリング (`getServerSideProps()`) と同等です。
+
+[Dynamic Rendering](https://beta.nextjs.org/docs/rendering/fundamentals#dynamic-rendering)
+
+## Server and Client Components
+
+### Server Components
+
+`app` ディレクトリ内のすべてのコンポーネントは、デフォルトで React Server Components であり、特別なファイルや同じ場所に配置されたコンポーネントを含みます。これにより、余分な作業なしでサーバー コンポーネントを自動的に採用し、すぐに優れたパフォーマンスを実現できます。
+
+[Server Components](https://beta.nextjs.org/docs/rendering/server-and-client-components#server-components)
+
+### Client Components
+
+クライアント コンポーネントはクライアント上でレンダリングされます。Next.js を使用すると、クライアント コンポーネントをサーバーで事前にレンダリングし、クライアントでハイドレートすることもできます。
+
+クライアント コンポーネントを使用するには、`app` 内にファイルを作成し、`'use client'` ディレクティブをコードの最初の行として追加します。
+
+```tsx
+'use client'
+
+import { useState } from 'react'
+
+export default function Counter() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  )
+}
+```
+
+コンポーネントが `useState` や `useEffect` などのクライアント フックを使用する場合にのみ、コンポーネントを `'use client'` としてマークする必要があります。クライアント フックに依存しないコンポーネントは、別のクライアント コンポーネントによってインポートされない場合にサーバー コンポーネントとして自動的にレンダリングされるように、ディレクティブなしで残しておくことをお勧めします。これにより、クライアント側の JavaScript を最小限に抑えることができます。
+
+[Client Components](https://beta.nextjs.org/docs/rendering/server-and-client-components#client-components)
+
+### When to use Server vs. Client Components?
+
+サーバー コンポーネントとクライアント コンポーネントの間の決定を簡素化するために、クライアント コンポーネントを使用する必要が生じるまでは、サーバー コンポーネント (`app` ディレクトリのデフォルト) を使用することをお勧めします。
+
+[When to use Server vs. Client Components?](https://beta.nextjs.org/docs/rendering/server-and-client-components#when-to-use-server-vs-client-components)
+
+### Data Fetching
+
+クライアント コンポーネントでデータを取得することは可能ですが、クライアントでデータを取得する特別な理由がない限り、サーバー コンポーネントでデータを取得することをお勧めします。データ取得をサーバーに移行すると、パフォーマンスとユーザー エクスペリエンスが向上します。
+
+[Data Fetching](https://beta.nextjs.org/docs/rendering/server-and-client-components#data-fetching)
+
+### Passing props from Server to Client Components (Serialization)
+
+サーバー コンポーネントからクライアント コンポーネントに渡される props は、シリアライズ可能である必要があります。これは、関数、日付などの値をクライアント コンポーネントに直接渡すことができないことを意味します。
+
+[Passing props from Server to Client Components (Serialization)](https://beta.nextjs.org/docs/rendering/server-and-client-components#passing-props-from-server-to-client-components-serialization)
+
+### Keeping Server-Only Code out of Client Components (Poisoning)
+
+JavaScript モジュールはサーバー コンポーネントとクライアント コンポーネントの両方で共有できるため、サーバー上でのみ実行することを意図したコードがクライアントに忍び込む可能性があります。
+
+```tsx
+export async function getData() {
+  let res = await fetch('https://external-service.com/data', {
+    headers: {
+      authorization: process.env.API_KEY,
+    },
+  })
+
+  return res.json()
+}
+```
+
+一見すると、`getData` はサーバーとクライアントの両方で機能するように見えます。ただし、環境変数 `API_KEY` には `NEXT_PUBLIC` がプレフィックスとして付けられていないため、サーバー上でのみアクセスできるプライベート変数です。Next.js は、クライアント コード内のプライベート環境変数を空の文字列に置き換えて、安全な情報が漏洩するのを防ぎます。
+
+その結果、クライアントで `getData()` をインポートして実行できても、期待どおりに動作しません。また、変数を public にすると、クライアントで関数が機能するようになりますが、機密情報が漏洩する可能性があります。
+
+この種の意図しないクライアントによるサーバー コードの使用を防ぐために、`server-only` パッケージを使用して、他の開発者がこれらのモジュールの 1 つをクライアント コンポーネントに誤ってインポートした場合にビルド時のエラーを与えることができます。
+
+`server-only` を使用するには、まずパッケージをインストールします:
+
+```bash
+npm install server-only
+```
+
+次に、サーバーのみのコードを含む任意のモジュールにパッケージをインポートします:
+
+```tsx
+import 'server-only'
+
+export async function getData() {
+  let resp = await fetch('https://external-service.com/data', {
+    headers: {
+      authorization: process.env.API_KEY,
+    },
+  })
+
+  return resp.json()
+}
+```
+
+これで、`getData()` をインポートするすべてのクライアント コンポーネントは、このモジュールがサーバー上でのみ使用できることを説明するビルド時エラーを受け取ります。
+
+[Keeping Server-Only Code out of Client Components (Poisoning)](https://beta.nextjs.org/docs/rendering/server-and-client-components#keeping-server-only-code-out-of-client-components-poisoning)
+
+### Moving Client Components to the Leaves
+
+アプリケーションのパフォーマンスを向上させるために、可能であればクライアント コンポーネントをコンポーネント ツリーのリーフに移動することをお勧めします。
+
+たとえば、静的要素 (ロゴ、リンクなど) と状態を使用するインタラクティブな検索バーを含むレイアウトがあるとします。
+
+レイアウト全体をクライアント コンポーネントにする代わりに、インタラクティブ ロジックをクライアント コンポーネント (`<SearchBar />` など) に移動し、レイアウトをサーバー コンポーネントとして保持します。これは、レイアウトのすべてのコンポーネント Javascript をクライアントに送信する必要がないことを意味します。
+
+```tsx
+// SearchBar is a Client Component
+import SearchBar from './SearchBar'
+// Logo is a Server Component
+import Logo from './Logo'
+
+// Layout is a Server Component by default
+export default function Layout({ children }) {
+  return (
+    <>
+      <nav>
+        <Logo />
+        <SearchBar />
+      </nav>
+      <main>{children}</main>
+    </>
+  )
+}
+```
+
+[Moving Client Components to the Leaves](https://beta.nextjs.org/docs/rendering/server-and-client-components#moving-client-components-to-the-leaves)
+
+### Importing Server Components into Client Components
+
+サーバー コンポーネントとクライアント コンポーネントは、同じコンポーネント ツリーにインターリーブできます。バックグラウンドで、React は両方の環境の作業をマージします。
+
+ただし、React では、クライアント コンポーネント内にサーバー コンポーネントをインポートすることに関して制限があります。これは、サーバー コンポーネントがサーバーのみのコード (データベースまたはファイル システム ユーティリティなど) を含む可能性があるためです。
+
+```tsx
+'use client'
+
+// ❌ This pattern will not work. You cannot import a Server
+// Component into a Client Component
+import ServerComponent from './ServerComponent'
+
+export default function ClientComponent() {
+  return (
+    <>
+      <ServerComponent />
+    </>
+  )
+}
+```
+
+サーバー コンポーネントをクライアント コンポーネントの子またはプロップとして渡すことができます。これを行うには、両方のコンポーネントを別のサーバー コンポーネントにラップします。例えば：
+
+```tsx
+// ✅ This pattern works. You can pass a Server Component
+// as a child or prop of a Client Component.
+import ClientComponent from './ClientComponent'
+import ServerComponent from './ServerComponent'
+
+// Pages are Server Components by default
+export default function Page() {
+  return (
+    <ClientComponent>
+      <ServerComponent />
+    </ClientComponent>
+  )
+}
+```
+
+このパターンでは、React は、結果 (サーバーのみのコードを含まない) をクライアントに送信する前に、サーバー上で `<ServerComponent />` をレンダリングする必要があることを認識します。クライアント コンポーネントの観点からは、その子は既にレンダリングされています。
+
+このパターンは、`children` プロパティを使用してレイアウトとページに既に適用されているため、追加のラッパー コンポーネントを作成する必要はありません。
+
+たとえば、`<ClientLayout />` コンポーネントは `<ServerPage />` コンポーネントをその子として受け入れます。
+
+```tsx
+// app/dashboard/layout.js
+
+'use client'
+
+// The Dashboard Layout is a Client Component
+export default function ClientLayout({ children }) {
+  // Can use useState / useEffect here
+  return (
+    <>
+      <h1>Layout</h1>
+      {children}
+    </>
+  )
+}
+```
+
+```tsx
+// app/dashboard/page.js
+
+// The Dashboard Page is a Server Component that will be
+// passed to Dashboard Layout
+export default function ServerPage() {
+  return (
+    <>
+      <p>Page</p>
+    </>
+  )
+}
+```
+
+[Importing Server Components into Client Components](https://beta.nextjs.org/docs/rendering/server-and-client-components#importing-server-components-into-client-components)
+
+## Data Fetching Fundamentals
+
+Next.js 13 では、アプリケーションでデータを取得して管理する新しい方法が導入されました。`getServerSideProps`、`getStaticProps`、`getInitialProps` などの以前の Next.js API は、新しい `app` ディレクトリではサポートされていません。
+
+[Data Fetching Fundamentals](https://beta.nextjs.org/docs/data-fetching/fundamentals)
+
+### Fetching Data with Server Components
+
+`app` 内では、サーバー コンポーネント内でデータを取得することをお勧めします。サーバー コンポーネントは、常にサーバー上のデータをフェッチします。
+
+- サーバー コンポーネントは、クライアント上で実行されることがないため、バックエンド データ リソース (データベース、API など) に直接アクセスできます。
+- 機密情報をサーバーに保持することで、アプリケーションを安全に保つことが容易になります。たとえば、アクセス トークン、API キーなどです。
+- フェッチとレンダリングが同じ環境で行われるため、クライアントとサーバー間のやり取りが減り、最終的にはブラウザーで行われる作業が減ります。
+
+[Fetching Data with Server Components](https://beta.nextjs.org/docs/data-fetching/fundamentals#fetching-data-with-server-components)
+
+### Component-level Data Fetching
+
+`app` ディレクトリでは、レイアウト、ページ、およびコンポーネント内のデータを取得できます。ただし、コンポーネント レベルでのデータ フェッチは、React の並行動作、特にストリーミングとサスペンスと互換性がある必要があります。
+
+この新しいモデルでは、複数のコンポーネントで同じデータを要求している場合でも、データを props として子コンポーネントに渡すのではなく、データを必要とするコンポーネント内で直接データをフェッチすることをお勧めします。バックグラウンドでは、React と Next.js がリクエストをキャッシュして重複排除し、同じデータが複数回取得されるのを回避します。
+
+> **警告:** 親レイアウトとその子の間でデータを渡すことはできません。ただし、ルートで同じデータを複数回フェッチすることができ、React はパフォーマンスに影響を与えることなく、リクエストを自動的に重複排除します。
+
+[Component-level Data Fetching](https://beta.nextjs.org/docs/data-fetching/fundamentals#component-level-data-fetching)
+
+### Streaming and Suspense
+
+サーバー コンポーネントと Next.js のネストされたレイアウトを使用すると、特にデータを必要としないページの部分を即座にレンダリングし、データを取得しているページの部分の読み込み状態を表示できます。これは、ユーザーが操作を開始する前に、ページ全体が読み込まれるのを待つ必要がないことを意味します。
+
+[Streaming and Suspense](https://beta.nextjs.org/docs/data-fetching/fundamentals#streaming-and-suspense)
+
+## Data Fetching
+
+`fetch()` は、リモート リソースをフェッチし、promise を返すために使用される Web API です。React は `fetch` を拡張してリクエストの自動重複排除を提供し、Next.js は `fetch` オプション オブジェクトを拡張して、各リクエストが独自のキャッシュと再検証を設定できるようにします。
+
+[Data Fetching](https://beta.nextjs.org/docs/data-fetching/fetching)
+
+### Example: `fetch` and `async`/`await` in Server Components
+
+```tsx
+async function getData() {
+  const res = await fetch('https://api.example.com/...')
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+  return res.json()
+}
+
+export default async function Page() {
+  const name = await getData()
+
+  return '...'
+}
+```
+
+[Example: `fetch` and `async`/`await` in Server Components](https://beta.nextjs.org/docs/data-fetching/fetching#example-fetch-and-asyncawait-in-server-components)
+
+### Example: `fetch` and `use` in Client Components
+
+```tsx
+'use client'
+
+import { use } from 'react'
+
+async function getData() {
+  const res = await fetch('https://api.example.com/...')
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+  return res.json()
+}
+
+export default async function Page() {
+  const name = use(getData())
+
+  return '...'
+}
+```
+
+`fetch` は現在クライアント コンポーネントではサポートされておらず、複数の再レンダリングをトリガーする可能性があります。現時点では、クライアント コンポーネントでデータを取得する必要がある場合は、[SWR](https://swr.vercel.app/) などのサードパーティ ライブラリを使用することをお勧めします。
+
+`use` は `await` と概念的に似た promise を受け入れる新しい React 関数です。`use` は、コンポーネント、フック、およびサスペンスと互換性のある方法で、関数によって返される promise を処理します。
+
+[Example: `fetch` and `use` in Client Components](https://beta.nextjs.org/docs/data-fetching/fetching#example-fetch-and-use-in-client-components)
+
+### Static and Dynamic Fetches
+
+#### Static Data
+
+デフォルトでは、`fetch` は自動的に静的データ (キャッシュされたデータ) をフェッチします。
+
+```tsx
+fetch('https://...') // cache: 'force-cache' is the default
+```
+
+```tsx
+// app/blog/layout.js
+
+import Link from 'next/link'
+
+async function getNavItems() {
+  const navItems = await fetch('https://api.example.com/...')
+  return navItems.json()
+}
+
+export default async function Layout({ children }) {
+  const navItems = await getNavItems()
+
+  return (
+    <>
+      <nav>
+        <ul>
+          {navItems.map((item) => (
+            <li key={item.id}>
+              <Link href={item.href}>{item.name}</Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      {children}
+    </>
+  )
+}
+```
+
+> **注:** これは、Next.js 12 の `getStaticProps()` と同等です。
+
+[Static Data](https://beta.nextjs.org/docs/data-fetching/fetching#static-data)
+
+#### Revalidating Data
+
+キャッシュされたデータを再検証するには、`fetch()` で `next.revalidate` オプションを使用できます。デフォルトの単位は秒です。
+
+```tsx
+fetch('https://...', { next: { revalidate: 10 } })
+```
+
+> **注:** これにより、Incremental Static Regeneration (ISR) と同等の間隔で再検証できます。
+
+[Revalidating Data](https://beta.nextjs.org/docs/data-fetching/fetching#revalidating-data)
+
+#### Dynamic Data
+
+`fetch()` リクエストごとにデータを再フェッチするには、`cache: 'no-store'` オプションを使用します。
+
+```tsx
+fetch('https://...', { cache: 'no-store' })
+```
+
+> **注:** これは `getServerSideProps()` と同等です。
+
+[Dynamic Data](https://beta.nextjs.org/docs/data-fetching/fetching#dynamic-data)
+
+### Data Fetching Patterns
+
+#### Parallel Data Fetching
+
+クライアント サーバー ウォーターフォールを最小限に抑えるには、次のパターンを使用してサーバー コンポーネントで並列にデータを取得することをお勧めします。
+
+```tsx
+// app/artist/[username]/page.jsx
+
+async function getArtist(username) {
+  const res = await fetch(`https://api.example.com/artist/${username}`)
+  return res.json()
+}
+
+async function getArtistAlbums(username) {
+  const res = await fetch(`https://api.example.com/artist/${username}/albums`)
+  return res.json()
+}
+
+// Albums Component
+async function Albums({ promise }) {
+  // Wait for the albums...
+  const albums = await promise
+
+  return (
+    <ul>
+      {albums.map((album) => (
+        <li key={album.id}>{album.name}</li>
+      ))}
+    </ul>
+  )
+}
+
+export default async function Page({ params: { username } }) {
+  // Queue up the promises here...
+  const _artist = getArtist(username)
+  const _albums = getArtistAlbums(username)
+
+  // Wait for the artist...
+  const artist = await _artist
+
+  return (
+    <>
+      <h1>{artist.name}</h1>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Albums promise={_albums} />
+      </Suspense>
+    </>
+  )
+}
+```
+
+`await` を呼び出す前にフェッチを開始することで、各リクエストと各ルート セグメントは同時にフェッチ リクエストを積極的に開始できます。これにより、ウォーターフォールを回避できるようにコンポーネントが設定されます。
+
+[Parallel Data Fetching](https://beta.nextjs.org/docs/data-fetching/fetching#parallel-data-fetching)
+
+#### Sequential Data Fetching
+
+データを順番にフェッチするには、`fetch()` の結果を `await` することができます。
+
+```tsx
+// app/artist/page.tsx
+
+async function getArtist(username) {
+  const res = await fetch(`https://api.example.com/artist/${username}`)
+  return res.json()
+}
+
+async function getArtistPlaylists(artistID) {
+  const res = await fetch(`https://api.example.com/playlists/${artistID}`)
+  return res.json()
+}
+
+async function Playlists({ artistID }) {
+  // Wait for the playlists...
+  const playlists = await getArtistPlaylists(artistID)
+
+  return (
+    <ul>
+      {playlists.map((playlist) => (
+        <li key={playlist.id}>{playlist.name}</li>
+      ))}
+    </ul>
+  )
+}
+
+export default async function Page({ params: { username } }) {
+  // Wait for the artist...
+  const artist = await getArtist(username)
+
+  return (
+    <>
+      <h1>{artist.name}</h1>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Playlists artistID={artist.id} />
+      </Suspense>
+    </>
+  )
+}
+```
+
+コンポーネント内でデータをフェッチすることにより、ルート内の各フェッチ リクエストとネストされたセグメントは、前のリクエストまたはセグメントが完了するまでデータのフェッチを開始できません。
+
+[Sequential Data Fetching](https://beta.nextjs.org/docs/data-fetching/fetching#sequential-data-fetching)
+
+#### Blocking Rendering in a Route
+
+Next.js 13 では、探索する追加のオプションがあります。まず、`loading.js` を使用して、データ フェッチ関数からの結果をストリーミングしながら、サーバーからの即時の読み込み状態を表示できます。2 つ目は、データ フェッチをコンポーネント ツリーの下位に移動して、ページの必要な部分のレンダリングのみをブロックすることです。たとえば、データのフェッチをルート レイアウトでフェッチするのではなく、特定のコンポーネントに移動します。
+
+可能な限り、それを使用するコンポーネントでデータを取得することをお勧めします。これにより、ページ全体ではなく、ページの一部のみの読み込み状態を表示することもできます。
+
+[Blocking Rendering in a Route](https://beta.nextjs.org/docs/data-fetching/fetching#blocking-rendering-in-a-route)
+
+## Mutating Data
+
+この RFC はまだ公開されていません。現時点では、次のパターンをお勧めします。
+
+リストビューを考えてみましょう。サーバー コンポーネント内で、アイテムのリストを取得します:
+
+```tsx
+// app/page.tsx
+
+import Todo from './todo'
+
+interface Todo {
+  id: number
+  title: string
+  completed: boolean
+}
+
+async function getTodos() {
+  const res = await fetch('https://api.example.com/todos')
+  const todos: Todo[] = await res.json()
+  return todos
+}
+
+export default async function Page() {
+  const todos = await getTodos()
+  return (
+    <ul>
+      {todos.map((todo) => (
+        <Todo key={todo.id} {...todo} />
+      ))}
+    </ul>
+  )
+}
+```
+
+個々のアイテムにはそれぞれ独自のクライアント コンポーネントがあります。これにより、コンポーネントはイベント ハンドラー (`onClick` や `onSubmit` など) を使用してミューテーションをトリガーできます。
+
+```tsx
+// app/todo.tsx
+
+'use client'
+
+import { useRouter } from 'next/navigation'
+
+interface Todo {
+  id: number
+  title: string
+  completed: boolean
+}
+
+async function update(id: number, completed: boolean, refresh: () => void) {
+  await fetch(`https://api.example.com/todo/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify({ completed }),
+  })
+
+  // Refresh the current route and fetch new data from the server
+  refresh()
+}
+
+export default function Todo(todo: Todo) {
+  const router = useRouter()
+
+  return (
+    <li>
+      <input
+        type="checkbox"
+        checked={todo.completed}
+        onChange={(e) => update(todo.id, !todo.completed, router.refresh)}
+      />
+      {todo.title}
+    </li>
+  )
+}
+```
+
+`refresh()` を呼び出すと、現在のルートが更新され、サーバーから todo の更新されたリストが取得されます。これはブラウザの履歴には影響しませんが、ルート レイアウトからデータを更新します。`refresh()` を使用する場合、React とブラウザーの両方の状態を含め、クライアント側の状態は失われません。
+
+[Mutating Data](https://beta.nextjs.org/docs/data-fetching/mutating)
+
+## Streaming and Suspense
+
+ストリーミングは、データを取得するためのネットワーク リクエストが遅い場合に特に役立ちます。API やデータベース ルックアップが遅いためにページ全体のレンダリングがブロックされるのではなく…
+
+遅い、または一貫性のない要求は、サスペンス境界でラップして、サーバーでのレンダリングが完了するまで `fallback` コンポーネントを表示できます。
+
+`loading.js` (ルート セグメント全体の場合) または Suspense 境界 (より詳細な読み込み UI の場合) を使用して、Next.js で UI をストリーミングできます。
+
+[Streaming and Suspense](https://beta.nextjs.org/docs/data-fetching/streaming-and-suspense)
+
+### Instant Loading UI
+
+特別なファイル `loading.js` を使用すると、ルート セグメントのコンテンツがロードされている間、サーバーからの即時のロード状態を表示できます。ルート セグメントでのすべてのデータ フェッチが完了すると、読み込み UI がページ用にスワップされます。
+
+```tsx
+// app/dashboard/loading.tsx
+
+export default function Loading() {
+  return <p>Loading...</p>
+}
+```
+
+[Instant Loading UI](https://beta.nextjs.org/docs/data-fetching/streaming-and-suspense#instant-loading-ui)
+
+### Suspense Boundaries
+
+サスペンス境界は、React コンポーネントをラップします。コンポーネントのレンダリングが中断されている間、サスペンス境界の `fallback` が表示されます。
+
+```tsx
+// app/dashboard/page.tsx
+
+import { Suspense } from 'react'
+import { PostFeed, Weather } from './Components'
+
+export default function Posts() {
+  return (
+    <section>
+      <Suspense fallback={<p>Loading feed...</p>}>
+        <PostFeed />
+      </Suspense>
+      <Suspense fallback={<p>Loading weather...</p>}>
+        <Weather />
+      </Suspense>
+    </section>
+  )
+}
+```
+
+[Suspense Boundaries](https://beta.nextjs.org/docs/data-fetching/streaming-and-suspense#suspense-boundaries)
+
+## Generating Static Params
+
+`generateStaticParams` サーバー関数を動的ルート セグメントと組み合わせて使用すると、オンデマンドではなくビルド時に静的に生成されるルート セグメント パラメータのリストを定義できます。
+
+これにより、`getStaticPaths` が簡素化された API に置き換えられます。`generateStaticParams` には、コンテキスト パラメーターは必要ありません。ビルド時に、対応するレイアウトまたはページが生成される前に実行されます。再検証 (ISR) 中に再度呼び出されることはありません。
+
+```tsx
+// app/blog/[slug]/page.js
+
+export async function generateStaticParams() {
+  const posts = await getPosts()
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }))
+}
+```
+
+`generateStaticParams` 関数の主な利点は、データのスマートな取得です。`fetch` リクエストを使用して `generateStaticParams` 関数内でコンテンツがフェッチされる場合、リクエストは自動的に重複排除されます。これは、複数の `generateStaticParams`、Layouts、および Pages にわたって同じ引数を持つ `fetch` リクエストが 1 回だけ行われることを意味し、ビルド時間が長くなります。
+
+[Generating Static Params](https://beta.nextjs.org/docs/data-fetching/generating-static-params)
+
+## Tailwind CSS
+
+[https://beta.nextjs.org/docs/styling/tailwind-css](https://beta.nextjs.org/docs/styling/tailwind-css)
+
+## OG Image Generation
+
+[https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation)
