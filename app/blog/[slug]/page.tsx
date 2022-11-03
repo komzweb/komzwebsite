@@ -1,6 +1,6 @@
 import { format } from 'date-fns'
 
-import { getPost } from '../../../utils/mdx'
+import { getPost } from '../../../utils/blog'
 
 export default function PostPage({
   params,

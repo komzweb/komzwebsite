@@ -3,7 +3,7 @@ import { format } from 'date-fns'
 
 import Vercel from './Vercel'
 import Copyright from './Copyright'
-import { getAllPosts } from '../utils/mdx'
+import { getAllPosts } from '../utils/blog'
 
 export default function Home() {
   const posts = getAllPosts(['slug', 'title', 'date'])

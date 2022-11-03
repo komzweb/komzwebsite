@@ -1,4 +1,4 @@
-import { getPost } from '../../../utils/mdx'
+import { getPost } from '../../../utils/blog'
 import { SITE_NAME, SITE_URL } from '../../../utils/constants'
 
 export default function PostHead({ params }: { params: { slug: string } }) {
