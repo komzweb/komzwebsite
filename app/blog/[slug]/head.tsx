@@ -1,13 +1,11 @@
 import { getPost } from '../../../utils/mdx'
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
-const siteName = process.env.NEXT_PUBLIC_SITE_NAME
+import { SITE_NAME, SITE_URL } from '../../../utils/constants'
 
 export default function PostHead({ params }: { params: { slug: string } }) {
   const post = getPost(params.slug, ['title', 'description'])
 
-  const pageUrl = `${siteUrl}/blog/${params.slug}`
-  const pageTitle = `${post.title} | ${siteName}`
+  const pageUrl = `${SITE_URL}/blog/${params.slug}`
+  const pageTitle = `${post.title} | ${SITE_NAME}`
   const description = post.description
   const ogImage = ''
 

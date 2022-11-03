@@ -1,7 +1,9 @@
+import { SITE_NAME } from '../utils/constants'
+
 export default function Copyright() {
   return (
     <span>
-      © {new Date().getFullYear()} {process.env.NEXT_PUBLIC_SITE_NAME}
+      © {new Date().getFullYear()} {SITE_NAME}
     </span>
   )
 }
