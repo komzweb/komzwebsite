@@ -10,7 +10,7 @@ const postsDirectory = join(process.cwd(), '_posts')
 
 export function getPost(slug: string, fields: string[] = []) {
   const realSlug = slug.replace(/\.mdx?$/, '')
-  const fullPath = join(postsDirectory, `${slug}.mdx`)
+  const fullPath = join(postsDirectory, `${realSlug}.mdx`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
 
