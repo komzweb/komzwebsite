@@ -8,19 +8,11 @@ type Items = {
 
 const postsDirectory = join(process.cwd(), '_posts')
 
-export function getSlugs() {
-  return fs.readdirSync(postsDirectory)
-}
-
-export function getFile(slug: string) {
-  const fullPath = join(postsDirectory, `${slug}.mdx`)
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
-  return matter(fileContents)
-}
-
 export function getPost(slug: string, fields: string[] = []) {
   const realSlug = slug.replace(/\.mdx?$/, '')
-  const { data, content } = getFile(realSlug)
+  const fullPath = join(postsDirectory, `${slug}.mdx`)
+  const fileContents = fs.readFileSync(fullPath, 'utf8')
+  const { data, content } = matter(fileContents)
 
   const items: Items = {}
 
@@ -40,7 +32,7 @@ export function getPost(slug: string, fields: string[] = []) {
 }
 
 export function getAllPosts(fields: string[] = []) {
-  const slugs = getSlugs()
+  const slugs = fs.readdirSync(postsDirectory)
   const posts = slugs
     .map((slug) => getPost(slug, fields))
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
