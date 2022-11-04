@@ -1,7 +1,6 @@
 import { format } from 'date-fns'
 import { serialize } from 'next-mdx-remote/serialize'
 import rehypeHighlight from 'rehype-highlight'
-import 'highlight.js/styles/night-owl.css'
 
 import Content from './Content'
 import { getAllPosts, getPost } from '../../../utils/blog'
