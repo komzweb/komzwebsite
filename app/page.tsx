@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <main className="mx-auto max-w-prose px-4">
-      <div className="py-8">
+      <div className="py-16">
         <h1 className="text-center text-3xl font-bold">{`Koshi Matsumoto's website`}</h1>
         <div className="mt-1">
           <div className="text-center text-sm text-slate-400">
