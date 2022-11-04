@@ -4,9 +4,9 @@ description: Next.js 13 Beta ドキュメントの要点をまとめてみた。
 date: '2022-10-30'
 ---
 
-この記事は、[Next.js 13 Beta Docs](https://beta.nextjs.org/docs) の要点をまとめて日本語に翻訳したものです（一部、他ドキュメントの情報あり）。翻訳ツールの出力をそのまま使用しているので、不自然な表現があるかもしれません。どうぞご了承ください。
+この記事は、<ExternalLink href="https://beta.nextjs.org/docs">Next.js 13 Beta Docs</ExternalLink> の要点をまとめて日本語に翻訳したものです（一部、他ドキュメントの情報あり）。翻訳ツールの出力をそのまま使用しているので、不自然な表現があるかもしれません。どうぞご了承ください。
 
-## [Getting Started](https://beta.nextjs.org/docs/getting-started)
+## <ExternalLink href="https://beta.nextjs.org/docs/getting-started">Getting Started</ExternalLink>
 
 `app` ディレクトリを使用して新しい Next.js プロジェクトを自動的に作成するには:
 
@@ -16,7 +16,7 @@ npx create-next-app@latest --experimental-app
 
 `create-next-app` はデフォルトで TypeScript に同梱されるようになりました。
 
-## [Routing Fundamentals](https://beta.nextjs.org/docs/routing/fundamentals)
+## <ExternalLink href="https://beta.nextjs.org/docs/routing/fundamentals">Routing Fundamentals</ExternalLink>
 
 ### The `app` Directory
 
@@ -36,7 +36,7 @@ npx create-next-app@latest --experimental-app
 
 兄弟ルート間を移動する場合、Next.js は変更されたルート内のレイアウトとページのみを取得してレンダリングします。サブツリーのセグメントより上にあるものは再取得または再レンダリングされません。これは、レイアウトを共有するルートでは、ユーザーが兄弟ページ間を移動するときにレイアウトが保持されることを意味します。
 
-## [Defining Routes](https://beta.nextjs.org/docs/routing/defining-routes)
+## <ExternalLink href="https://beta.nextjs.org/docs/routing/defining-routes">Defining Routes</ExternalLink>
 
 ### Route Groups
 
@@ -51,7 +51,7 @@ npx create-next-app@latest --experimental-app
 
 たとえば、ブログ投稿の場合、次のルート `app/blog/[slug]/page.js` を作成できます。`[slug]` はダイナミック セグメントです。
 
-## [Pages and Layouts](https://beta.nextjs.org/docs/routing/pages-and-layouts)
+## <ExternalLink href="https://beta.nextjs.org/docs/routing/pages-and-layouts">Pages and Layouts</ExternalLink>
 
 ### Pages
 
@@ -99,7 +99,7 @@ npx create-next-app@latest --experimental-app
 
 `app` ディレクトリで、新しい特別な `head.js` ファイルを使用して `<head>` タグを変更できます。これは、`pages` ディレクトリの `next/head` を置き換えます。
 
-## [Linking and Navigating](https://beta.nextjs.org/docs/routing/linking-and-navigating)
+## <ExternalLink href="https://beta.nextjs.org/docs/routing/linking-and-navigating">Linking and Navigating</ExternalLink>
 
 ### `<Link>` Component
 
@@ -137,7 +137,7 @@ export default function Page() {
 
 > **推奨事項:** `useRouter` を使用するための特定の要件がない限り、`<Link>` コンポーネントを使用してルート間を移動します。
 
-## [Rendering Fundamentals](https://beta.nextjs.org/docs/rendering/fundamentals)
+## <ExternalLink href="https://beta.nextjs.org/docs/rendering/fundamentals">Rendering Fundamentals</ExternalLink>
 
 ### Component-level Client and Server Rendering
 
@@ -157,7 +157,7 @@ export default function Page() {
 
 > **注:** これは、サーバー側のレンダリング (`getServerSideProps()`) と同等です。
 
-## [Server and Client Components](https://beta.nextjs.org/docs/rendering/server-and-client-components)
+## <ExternalLink href="https://beta.nextjs.org/docs/rendering/server-and-client-components">Server and Client Components</ExternalLink>
 
 ### Server Components
 
@@ -351,7 +351,7 @@ export default function ServerPage() {
 }
 ```
 
-## [Data Fetching Fundamentals](https://beta.nextjs.org/docs/data-fetching/fundamentals)
+## <ExternalLink href="https://beta.nextjs.org/docs/data-fetching/fundamentals">Data Fetching Fundamentals</ExternalLink>
 
 Next.js 13 では、アプリケーションでデータを取得して管理する新しい方法が導入されました。`getServerSideProps`、`getStaticProps`、`getInitialProps` などの以前の Next.js API は、新しい `app` ディレクトリではサポートされていません。
 
@@ -375,7 +375,7 @@ Next.js 13 では、アプリケーションでデータを取得して管理す
 
 サーバー コンポーネントと Next.js のネストされたレイアウトを使用すると、特にデータを必要としないページの部分を即座にレンダリングし、データを取得しているページの部分の読み込み状態を表示できます。これは、ユーザーが操作を開始する前に、ページ全体が読み込まれるのを待つ必要がないことを意味します。
 
-## [Data Fetching](https://beta.nextjs.org/docs/data-fetching/fetching)
+## <ExternalLink href="https://beta.nextjs.org/docs/data-fetching/fetching">Data Fetching</ExternalLink>
 
 `fetch()` は、リモート リソースをフェッチし、promise を返すために使用される Web API です。React は `fetch` を拡張してリクエストの自動重複排除を提供し、Next.js は `fetch` オプション オブジェクトを拡張して、各リクエストが独自のキャッシュと再検証を設定できるようにします。
 
@@ -417,7 +417,7 @@ export default async function Page() {
 }
 ```
 
-`fetch` は現在クライアント コンポーネントではサポートされておらず、複数の再レンダリングをトリガーする可能性があります。現時点では、クライアント コンポーネントでデータを取得する必要がある場合は、[SWR](https://swr.vercel.app/) などのサードパーティ ライブラリを使用することをお勧めします。
+`fetch` は現在クライアント コンポーネントではサポートされておらず、複数の再レンダリングをトリガーする可能性があります。現時点では、クライアント コンポーネントでデータを取得する必要がある場合は、<ExternalLink href="https://swr.vercel.app/">SWR</ExternalLink> などのサードパーティ ライブラリを使用することをお勧めします。
 
 `use` は `await` と概念的に似た promise を受け入れる新しい React 関数です。`use` は、コンポーネント、フック、およびサスペンスと互換性のある方法で、関数によって返される promise を処理します。
 
@@ -590,7 +590,7 @@ Next.js 13 では、探索する追加のオプションがあります。まず
 
 可能な限り、それを使用するコンポーネントでデータを取得することをお勧めします。これにより、ページ全体ではなく、ページの一部のみの読み込み状態を表示することもできます。
 
-## [Mutating Data](https://beta.nextjs.org/docs/data-fetching/mutating)
+## <ExternalLink href="https://beta.nextjs.org/docs/data-fetching/mutating">Mutating Data</ExternalLink>
 
 この RFC はまだ公開されていません。現時点では、次のパターンをお勧めします。
 
@@ -668,7 +668,7 @@ export default function Todo(todo: Todo) {
 
 `refresh()` を呼び出すと、現在のルートが更新され、サーバーから todo の更新されたリストが取得されます。これはブラウザの履歴には影響しませんが、ルート レイアウトからデータを更新します。`refresh()` を使用する場合、React とブラウザーの両方の状態を含め、クライアント側の状態は失われません。
 
-## [Streaming and Suspense](https://beta.nextjs.org/docs/data-fetching/streaming-and-suspense)
+## <ExternalLink href="https://beta.nextjs.org/docs/data-fetching/streaming-and-suspense">Streaming and Suspense</ExternalLink>
 
 ストリーミングは、データを取得するためのネットワーク リクエストが遅い場合に特に役立ちます。API やデータベース ルックアップが遅いためにページ全体のレンダリングがブロックされるのではなく…
 
@@ -712,7 +712,7 @@ export default function Posts() {
 }
 ```
 
-## [Generating Static Params](https://beta.nextjs.org/docs/data-fetching/generating-static-params)
+## <ExternalLink href="https://beta.nextjs.org/docs/data-fetching/generating-static-params">Generating Static Params</ExternalLink>
 
 `generateStaticParams` サーバー関数を動的ルート セグメントと組み合わせて使用すると、オンデマンドではなくビルド時に静的に生成されるルート セグメント パラメータのリストを定義できます。
 
@@ -734,8 +734,12 @@ export async function generateStaticParams() {
 
 ## Tailwind CSS
 
-[https://beta.nextjs.org/docs/styling/tailwind-css](https://beta.nextjs.org/docs/styling/tailwind-css)
+<ExternalLink href="https://beta.nextjs.org/docs/styling/tailwind-css">
+  https://beta.nextjs.org/docs/styling/tailwind-css
+</ExternalLink>
 
 ## OG Image Generation
 
-[https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation)
+<ExternalLink href="https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation">
+  https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation
+</ExternalLink>
