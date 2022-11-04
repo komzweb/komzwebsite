@@ -1,0 +1,22 @@
+:not(pre) > code {
+  @apply rounded border border-slate-300 bg-slate-200 px-1 !important;
+}
+li code,
+p code {
+  @apply font-normal !important;
+}
+code::before,
+code::after {
+  @apply content-none !important;
+}
+
+blockquote {
+  @apply rounded border border-slate-200 bg-slate-100 p-4 not-italic !important;
+}
+blockquote p {
+  @apply m-0 !important;
+}
+blockquote p::before,
+blockquote p::after {
+  @apply content-none !important;
+}

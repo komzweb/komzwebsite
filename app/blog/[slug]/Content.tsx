@@ -3,6 +3,8 @@
 import 'highlight.js/styles/night-owl.css'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 
+import './mdx.css'
+
 type Props = {
   mdxSource: MDXRemoteSerializeResult
 }
