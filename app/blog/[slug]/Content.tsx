@@ -4,7 +4,7 @@ import 'highlight.js/styles/night-owl.css'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 
 import './mdx.css'
-import ExternalLink from '../../ExternalLink'
+import ExternalLink from './ExternalLink'
 
 type Props = {
   mdxSource: MDXRemoteSerializeResult
