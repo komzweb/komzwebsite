@@ -20,17 +20,15 @@ export default async function PostPage({
 
   return (
     <main className="mx-auto max-w-prose px-4">
-      <div className="py-16">
-        <article className="prose lg:prose-xl">
-          <h1>{post.title}</h1>
-          <time dateTime={post.date} className="text-sm text-slate-400">
-            {format(new Date(post.date), 'yyyy MMM dd')}
-          </time>
-          <div className="mt-4">
-            <Content mdxSource={mdxSource} />
-          </div>
-        </article>
-      </div>
+      <article className="py-16">
+        <h1 className="mb-4 text-5xl font-extrabold">{post.title}</h1>
+        <time dateTime={post.date} className="text-sm text-slate-400">
+          {format(new Date(post.date), 'yyyy MMM dd')}
+        </time>
+        <div className="mt-4">
+          <Content mdxSource={mdxSource} />
+        </div>
+      </article>
     </main>
   )
 }
