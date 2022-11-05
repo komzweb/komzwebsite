@@ -1,11 +1,15 @@
 h2 {
-  @apply mt-16 mb-8 text-4xl font-bold;
+  @apply mt-16 mb-8 text-4xl font-bold dark:text-slate-100;
 }
 h3 {
-  @apply mt-12 mb-8 text-2xl font-semibold;
+  @apply mt-12 mb-8 text-2xl font-semibold dark:text-slate-100;
 }
 h4 {
-  @apply mt-12 mb-6 text-xl font-medium;
+  @apply mt-12 mb-6 text-xl font-medium dark:text-slate-100;
+}
+
+strong {
+  @apply dark:text-slate-100;
 }
 
 p {
@@ -20,18 +24,18 @@ li {
 }
 
 :not(pre) > code {
-  @apply rounded border border-slate-300 bg-slate-200 px-1;
+  @apply rounded border border-slate-200 bg-slate-100 px-1 dark:border-slate-700 dark:bg-slate-800;
 }
 
 pre {
-  @apply rounded;
+  @apply rounded dark:border dark:border-slate-800;
 }
 pre {
   @apply my-6 p-6 !important;
 }
 
 blockquote {
-  @apply my-6 rounded border border-slate-200 bg-slate-100 p-4;
+  @apply my-6 rounded border border-slate-200 bg-slate-100 p-4 dark:border-slate-700 dark:bg-slate-800;
 }
 blockquote p {
   @apply m-0;

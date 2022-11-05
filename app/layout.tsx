@@ -41,7 +41,9 @@ export default function RootLayout({
         <meta property="og:url" content={SITE_URL} />
         <link rel="canonical" href={SITE_URL} />
       </head>
-      <body>{children}</body>
+      <body className="text-slate-900 dark:bg-slate-900 dark:text-slate-300">
+        {children}
+      </body>
     </html>
   )
 }

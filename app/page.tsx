@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <main className="mx-auto max-w-prose px-4">
       <div className="py-16">
-        <h1 className="text-center text-3xl font-bold">{`Koshi Matsumoto's website`}</h1>
+        <h1 className="text-center text-3xl font-extrabold dark:text-slate-100">{`Koshi Matsumoto's website`}</h1>
         <div className="mt-1">
           <div className="text-center text-sm text-slate-400">
             <Copyright />
@@ -23,8 +23,11 @@ export default function Home() {
 
         <article className="mt-8">
           {posts.map((post) => (
-            <article key={post.slug} className="border-t border-slate-200 py-4">
-              <h2 className="text-2xl">
+            <article
+              key={post.slug}
+              className="border-t border-slate-200 py-4 dark:border-slate-800"
+            >
+              <h2 className="text-2xl font-bold dark:text-slate-100">
                 <Link href={`/blog/${post.slug}`} className="hover:underline">
                   {post.title}
                 </Link>
