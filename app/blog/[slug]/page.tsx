@@ -1,6 +1,6 @@
-import { format } from 'date-fns'
+import rehypePrism from 'rehype-prism-plus'
 import { serialize } from 'next-mdx-remote/serialize'
-import rehypeHighlight from 'rehype-highlight'
+import { format } from 'date-fns'
 
 import Content from './Content'
 import { getAllPosts, getPost } from '../../../utils/blog'
@@ -14,7 +14,7 @@ export default async function PostPage({
 
   const mdxSource = await serialize(post.content, {
     mdxOptions: {
-      rehypePlugins: [rehypeHighlight],
+      rehypePlugins: [rehypePrism],
     },
   })
 

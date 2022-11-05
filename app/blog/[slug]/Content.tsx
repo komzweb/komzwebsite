@@ -1,9 +1,9 @@
 'use client'
 
-import 'highlight.js/styles/night-owl.css'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 
 import './mdx.css'
+import './prism-night-owl.css'
 import ExternalLink from './ExternalLink'
 
 type Props = {
