@@ -1,22 +1,38 @@
+h2 {
+  @apply mt-16 mb-8 text-4xl font-bold;
+}
+h3 {
+  @apply mt-12 mb-8 text-2xl font-semibold;
+}
+h4 {
+  @apply mt-12 mb-6 text-xl font-medium;
+}
+
+p {
+  @apply my-6 leading-relaxed;
+}
+
+ul {
+  @apply my-6 pl-4;
+}
+li {
+  @apply my-4 list-inside list-disc leading-relaxed;
+}
+
 :not(pre) > code {
-  @apply rounded border border-slate-300 bg-slate-200 px-1 !important;
+  @apply rounded border border-slate-300 bg-slate-200 px-1;
 }
-li code,
-p code {
-  @apply font-normal !important;
+
+pre {
+  @apply rounded;
 }
-code::before,
-code::after {
-  @apply content-none !important;
+pre {
+  @apply my-6 p-6 !important;
 }
 
 blockquote {
-  @apply rounded border border-slate-200 bg-slate-100 p-4 not-italic !important;
+  @apply my-6 rounded border border-slate-200 bg-slate-100 p-4;
 }
 blockquote p {
-  @apply m-0 !important;
-}
-blockquote p::before,
-blockquote p::after {
-  @apply content-none !important;
+  @apply m-0;
 }
