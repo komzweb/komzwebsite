@@ -1,10 +1,10 @@
 ---
 title: Next.js 13 要点
-description: Next.js 13 Beta ドキュメントの要点をまとめてみた。
+description: Next.js 13 Beta Docs の要点をまとめてみた。
 date: '2022-10-30'
 ---
 
-この記事は、<ExternalLink href="https://beta.nextjs.org/docs">Next.js 13 Beta Docs</ExternalLink> の要点をまとめて日本語に翻訳したものです（一部、他ドキュメントの情報あり）。翻訳ツールの出力をそのまま使用しているので、不自然な表現があるかもしれません。どうぞご了承ください。
+この記事は、<ExternalLink href="https://beta.nextjs.org/docs">Next.js 13 Beta Docs</ExternalLink> の要点をまとめて日本語に翻訳したものです（一部、他ドキュメントからの情報あり）。Docs は頻繁に更新されるので、この記事の情報は古くなっている場合があります。また、翻訳ツールの出力をそのまま使用しているため、不自然な表現があるかもしれません。どうぞご了承ください。
 
 ## <ExternalLink href="https://beta.nextjs.org/docs/getting-started">Getting Started</ExternalLink>
 
@@ -75,7 +75,8 @@ npx create-next-app@latest --experimental-app
 #### Root Layout (必須)
 
 - `app` ディレクトリには、ルート レイアウトが含まれている必要があります。
-- Next.js が自動的に作成しないため、ルート レイアウトは `<html>` および `<body>` タグを定義する必要があります。`<head>` タグはオプションです。
+- Next.js が自動的に作成しないため、ルート レイアウトは `<html>` および `<body>` タグを定義する必要があります。
+- `head.js` 特殊ファイルを使用して、ルート セグメント間で変化する `<head>` HTML 要素を管理できます。たとえば、`<title>` 要素です。
 
 > **Next.js 12 からの移行:** ルート レイアウトは `_app.js` および `_document.js` ファイルを置き換えます。
 
