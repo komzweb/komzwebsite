@@ -113,6 +113,8 @@ export default function Page() {
 }
 ```
 
+`next/link` no longer requires manually adding `<a>` as a child.
+
 ### `useRouter()` Hook
 
 `useRouter` フックを使用すると、クライアント コンポーネント内のルートをプログラムで変更できます。
@@ -733,5 +735,9 @@ export async function generateStaticParams() {
 `generateStaticParams` 関数の主な利点は、データのスマートな取得です。`fetch` リクエストを使用して `generateStaticParams` 関数内でコンテンツがフェッチされる場合、リクエストは自動的に重複排除されます。これは、複数の `generateStaticParams`、Layouts、および Pages にわたって同じ引数を持つ `fetch` リクエストが 1 回だけ行われることを意味し、ビルド時間が長くなります。
 
 ## <ExternalLink href="https://beta.nextjs.org/docs/styling/tailwind-css">Tailwind CSS</ExternalLink>
+
+## <ExternalLink href="https://nextjs.org/docs/basic-features/image-optimization">Image Optimization</ExternalLink>
+
+## <ExternalLink href="https://nextjs.org/docs/basic-features/font-optimization">Font Optimization</ExternalLink>
 
 ## <ExternalLink href="https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation">OG Image Generation</ExternalLink>
