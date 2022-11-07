@@ -1,42 +1,42 @@
-h2 {
+.mdx h2 {
   @apply mt-16 mb-8 text-4xl font-bold dark:text-slate-100;
 }
-h3 {
+.mdx h3 {
   @apply mt-12 mb-8 text-2xl font-semibold dark:text-slate-100;
 }
-h4 {
+.mdx h4 {
   @apply mt-12 mb-6 text-xl font-medium dark:text-slate-100;
 }
 
-strong {
+.mdx strong {
   @apply dark:text-slate-100;
 }
 
-p {
+.mdx p {
   @apply my-6 leading-relaxed;
 }
 
-ul {
+.mdx ul {
   @apply my-6 pl-4;
 }
-li {
+.mdx li {
   @apply my-4 list-inside list-disc leading-relaxed;
 }
 
-:not(pre) > code {
+.mdx :not(pre) > code {
   @apply rounded border border-slate-200 bg-slate-100 px-1 dark:border-slate-700 dark:bg-slate-800;
 }
 
-pre {
+.mdx pre {
   @apply rounded dark:border dark:border-slate-800;
 }
-pre {
+.mdx pre {
   @apply my-6 p-6 !important;
 }
 
-blockquote {
+.mdx blockquote {
   @apply my-6 rounded border border-slate-200 bg-slate-100 p-4 dark:border-slate-700 dark:bg-slate-800;
 }
-blockquote p {
+.mdx blockquote p {
   @apply m-0;
 }
