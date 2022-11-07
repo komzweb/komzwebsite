@@ -4,7 +4,7 @@ import { format } from 'date-fns'
 
 import './prism-night-owl.css'
 import Content from './Content'
-import { getAllPosts, getPost } from '../../../utils/blog'
+import { getPost } from '../../../utils/blog'
 
 export default async function PostPage({
   params,
@@ -34,12 +34,4 @@ export default async function PostPage({
       </article>
     </main>
   )
-}
-
-export function generateStaticParams() {
-  const posts = getAllPosts(['slug'])
-
-  return posts.map((post) => ({
-    slug: post.slug,
-  }))
 }
