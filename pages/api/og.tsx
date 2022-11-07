@@ -1,5 +1,7 @@
 import { ImageResponse } from '@vercel/og'
 
+import { SITE_NAME } from '../../utils/constants'
+
 export const config = {
   runtime: 'experimental-edge',
 }
@@ -7,24 +9,13 @@ export const config = {
 export default function handler() {
   return new ImageResponse(
     (
-      <div
-        style={{
-          fontSize: 128,
-          background: 'white',
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          textAlign: 'center',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        Hello world!
+      <div tw="flex h-full w-full items-center justify-center bg-slate-900 text-8xl text-slate-100">
+        🦉 {SITE_NAME}
       </div>
     ),
     {
       width: 1200,
-      height: 600,
+      height: 630,
     }
   )
 }
