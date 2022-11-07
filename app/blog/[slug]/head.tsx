@@ -7,7 +7,7 @@ export default function PostHead({ params }: { params: { slug: string } }) {
   const url = `${SITE_URL}/blog/${params.slug}`
   const title = `${post.title} | ${SITE_NAME}`
   const description = post.description
-  const ogImage = ''
+  const ogImage = `${SITE_URL}/api/og-post?title=${post.title}`
 
   return (
     <>
