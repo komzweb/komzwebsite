@@ -2,8 +2,7 @@
 
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 
-import './mdx.css'
-import './prism-night-owl.css'
+import contentStyles from './Content.module.css'
 import ExternalLink from './ExternalLink'
 
 type Props = {
@@ -15,5 +14,9 @@ const components = {
 }
 
 export default function Content({ mdxSource }: Props) {
-  return <MDXRemote {...mdxSource} components={components} />
+  return (
+    <div className={contentStyles.mdx}>
+      <MDXRemote {...mdxSource} components={components} />
+    </div>
+  )
 }
