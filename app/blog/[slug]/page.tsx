@@ -2,6 +2,7 @@ import rehypePrism from 'rehype-prism-plus'
 import { serialize } from 'next-mdx-remote/serialize'
 import { format } from 'date-fns'
 
+import './prism-night-owl.css'
 import Content from './Content'
 import { getAllPosts, getPost } from '../../../utils/blog'
 
