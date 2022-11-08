@@ -28,7 +28,7 @@ export default function RootLayout({
         />
         <link rel="manifest" href="/favicon/site.webmanifest" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content={TWITTER_HANDLE} />
+        <meta name="twitter:site" content={`@${TWITTER_HANDLE}`} />
       </head>
       <body className="text-slate-900 dark:bg-slate-900 dark:text-slate-300">
         {children}
