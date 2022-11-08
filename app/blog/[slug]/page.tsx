@@ -20,8 +20,8 @@ export default async function PostPage({
   })
 
   return (
-    <main className="mx-auto max-w-prose px-4">
-      <article className="py-16">
+    <main className="pb-16 pt-8">
+      <article>
         <h1 className="mb-4 text-5xl font-extrabold dark:text-slate-100">
           {post.title}
         </h1>
