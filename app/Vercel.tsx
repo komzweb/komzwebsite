@@ -1,7 +1,7 @@
 export default function Vercel() {
   return (
     <a
-      href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+      href="https://vercel.com"
       target="_blank"
       rel="noopener noreferrer"
       className="flex items-center justify-center space-x-1"
