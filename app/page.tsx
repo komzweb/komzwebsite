@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import { format } from 'date-fns'
 
+import { getAllPosts } from '../utils/blog'
+import Container from './Container'
+import Copyright from './Copyright'
 import Social from './Social'
 import Vercel from './Vercel'
-import Copyright from './Copyright'
-import Container from './Container'
-import { getAllPosts } from '../utils/blog'
 
 export default function Home() {
   const posts = getAllPosts(['slug', 'title', 'date'])

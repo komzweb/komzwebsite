@@ -1,10 +1,10 @@
-import rehypePrism from 'rehype-prism-plus'
-import { serialize } from 'next-mdx-remote/serialize'
 import { format } from 'date-fns'
+import { serialize } from 'next-mdx-remote/serialize'
+import rehypePrism from 'rehype-prism-plus'
 
-import './prism-night-owl.css'
-import Content from './Content'
 import { getPost } from '../../../utils/blog'
+import Content from './Content'
+import './prism-night-owl.css'
 
 export default async function PostPage({
   params,
