@@ -11,7 +11,7 @@ export default async function PostPage({
 }: {
   params: { slug: string }
 }) {
-  const post = getPost(params.slug, ['title', 'date', 'content'])
+  const post = getPost(params.slug, ['title', 'date', 'lang', 'content'])
 
   const mdxSource = await serialize(post.content, {
     mdxOptions: {
@@ -21,7 +21,7 @@ export default async function PostPage({
 
   return (
     <main className="pb-16 pt-8">
-      <article>
+      <article lang={post.lang}>
         <h1 className="mb-4 text-5xl font-extrabold dark:text-slate-100">
           {post.title}
         </h1>
