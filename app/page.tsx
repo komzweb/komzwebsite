@@ -1,18 +1,26 @@
 import Link from 'next/link'
 import { format } from 'date-fns'
 
+import Social from './Social'
 import Vercel from './Vercel'
 import Copyright from './Copyright'
+import Container from './Container'
 import { getAllPosts } from '../utils/blog'
 
 export default function Home() {
   const posts = getAllPosts(['slug', 'title', 'date'])
 
   return (
-    <main className="mx-auto max-w-prose px-4">
-      <div className="py-16">
+    <Container>
+      <header className="flex h-32 items-center justify-center">
+        <div className="text-4xl">
+          <Social />
+        </div>
+      </header>
+
+      <main className="pb-16">
         <h1 className="text-center text-3xl font-extrabold dark:text-slate-100">{`Koshi Matsumoto's website`}</h1>
-        <div className="mt-1">
+        <div className="mt-2">
           <div className="text-center text-sm text-slate-400">
             <Copyright />
           </div>
@@ -38,7 +46,7 @@ export default function Home() {
             </article>
           ))}
         </article>
-      </div>
-    </main>
+      </main>
+    </Container>
   )
 }
