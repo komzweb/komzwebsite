@@ -2,9 +2,17 @@ import { format } from 'date-fns'
 import { serialize } from 'next-mdx-remote/serialize'
 import rehypePrism from 'rehype-prism-plus'
 
-import { getPost } from '../../../utils/blog'
+import { getAllPosts, getPost } from '../../../utils/blog'
 import Content from './Content'
 import './prism-night-owl.css'
+
+export async function generateStaticParams() {
+  const posts = getAllPosts(['slug'])
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }))
+}
 
 export default async function PostPage({
   params,
