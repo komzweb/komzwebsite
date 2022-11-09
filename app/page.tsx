@@ -7,7 +7,7 @@ import Copyright from './Copyright'
 import Social from './Social'
 import Vercel from './Vercel'
 
-export default function Home() {
+export default function RootPage() {
   const posts = getAllPosts(['slug', 'title', 'date'])
 
   return (
