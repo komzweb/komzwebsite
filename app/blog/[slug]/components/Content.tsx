@@ -2,7 +2,7 @@
 
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 
-import contentStyles from './Content.module.css'
+import contentStyles from '../styles/Content.module.css'
 import ExternalLink from './ExternalLink'
 
 type Props = {

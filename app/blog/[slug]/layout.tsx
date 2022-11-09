@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { FaHome } from 'react-icons/fa'
 
-import Container from '../../Container'
-import Social from '../../Social'
+import Container from '../../components/Container'
+import Social from '../../components/Social'
 
 export default function PostLayout({
   children,

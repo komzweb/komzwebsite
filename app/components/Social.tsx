@@ -1,6 +1,6 @@
 import { FaGithub, FaTwitter } from 'react-icons/fa'
 
-import { GITHUB_HANDLE, TWITTER_HANDLE } from '../utils/constants'
+import { GITHUB_HANDLE, TWITTER_HANDLE } from '../../utils/constants'
 
 export default function Social() {
   return (

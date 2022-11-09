@@ -2,10 +2,10 @@ import Link from 'next/link'
 import { format } from 'date-fns'
 
 import { getAllPosts } from '../utils/blog'
-import Container from './Container'
-import Copyright from './Copyright'
-import Social from './Social'
-import Vercel from './Vercel'
+import Container from './components/Container'
+import Copyright from './components/Copyright'
+import Social from './components/Social'
+import Vercel from './components/Vercel'
 
 export default function RootPage() {
   const posts = getAllPosts(['slug', 'title', 'date'])

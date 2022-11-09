@@ -3,8 +3,8 @@ import { serialize } from 'next-mdx-remote/serialize'
 import rehypePrism from 'rehype-prism-plus'
 
 import { getAllPosts, getPost } from '../../../utils/blog'
-import Content from './Content'
-import './prism-night-owl.css'
+import Content from './components/Content'
+import './styles/prism-night-owl.css'
 
 export async function generateStaticParams() {
   const posts = getAllPosts(['slug'])
