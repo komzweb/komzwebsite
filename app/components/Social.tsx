@@ -9,6 +9,7 @@ export default function Social() {
         href={`https://github.com/${GITHUB_HANDLE}`}
         target="_blank"
         rel="noopener noreferrer"
+        className="hover:text-blue-500 dark:hover:text-slate-100"
       >
         <FaGithub />
       </a>
@@ -16,6 +17,7 @@ export default function Social() {
         href={`https://twitter.com/${TWITTER_HANDLE}`}
         target="_blank"
         rel="noopener noreferrer"
+        className="hover:text-blue-500 dark:hover:text-slate-100"
       >
         <FaTwitter />
       </a>
