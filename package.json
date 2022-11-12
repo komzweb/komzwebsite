@@ -10,7 +10,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@next/font": "^13.0.2",
+    "@next/font": "^13.0.3",
     "@vercel/og": "^0.0.20",
     "date-fns": "^2.29.3",
     "gray-matter": "^4.0.3",
