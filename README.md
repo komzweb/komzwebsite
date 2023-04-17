@@ -5,7 +5,7 @@
 ## Running Locally
 
 ```bash
-https://github.com/komzweb/komzwebsite.git
+git clone https://github.com/komzweb/komzwebsite.git
 cd komzwebsite
 npm install
 npm run dev
