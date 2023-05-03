@@ -8,7 +8,6 @@ export default function PostHead({ params }: { params: { slug: string } }) {
   const url = `${SITE_URL}/blog/${params.slug}`
   const title = `${post.title} | ${SITE_NAME}`
   const description = post.description
-  const ogImage = `${SITE_URL}/api/og-post?title=${post.title}`
 
   return (
     <>
@@ -16,7 +15,6 @@ export default function PostHead({ params }: { params: { slug: string } }) {
       <meta property="og:title" content={title} />
       <meta name="description" content={description} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={ogImage} />
       <meta property="og:type" content="article" />
       <meta property="og:url" content={url} />
       <link rel="canonical" href={url} />
