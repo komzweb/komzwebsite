@@ -1,12 +1,8 @@
-import { ImageResponse } from '@vercel/og'
+import { ImageResponse } from 'next/server'
 
-import { SITE_NAME } from '../../utils/constants'
+import { SITE_NAME } from '../utils/constants'
 
-export const config = {
-  runtime: 'experimental-edge',
-}
-
-export default function handler() {
+export default function RootOG() {
   return new ImageResponse(
     (
       <div tw="flex h-full w-full items-center justify-center bg-slate-900 text-8xl text-slate-100">

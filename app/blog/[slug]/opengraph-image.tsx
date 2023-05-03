@@ -1,18 +1,13 @@
-import { ImageResponse } from '@vercel/og'
-import { NextRequest } from 'next/server'
+import { ImageResponse, NextRequest } from 'next/server'
 
-export const config = {
-  runtime: 'experimental-edge',
-}
-
-export default function handler(req: NextRequest) {
+export default function PostOG(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url)
 
     const hasTitle = searchParams.has('title')
     const title = hasTitle
       ? searchParams.get('title')?.slice(0, 100)
-      : 'komzWebsite Blog Post'
+      : 'Blog Post'
 
     return new ImageResponse(
       (
