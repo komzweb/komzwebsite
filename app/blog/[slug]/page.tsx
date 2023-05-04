@@ -5,10 +5,37 @@ import { serialize } from 'next-mdx-remote/serialize'
 import rehypePrism from 'rehype-prism-plus'
 
 import { getAllPosts, getPost } from '../../../utils/blog'
+import { SITE_NAME, SITE_URL } from '../../../utils/constants'
 import Container from '../../components/Container'
 import Social from '../../components/Social'
 import Content from './components/Content'
 import './styles/prism-night-owl.css'
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string }
+}) {
+  const post = getPost(params.slug, ['title', 'description'])
+
+  const url = `${SITE_URL}/blog/${params.slug}`
+  const title = `${post.title} | ${SITE_NAME}`
+  const description = post.description
+
+  return {
+    title: title,
+    description: description,
+    openGraph: {
+      title: title,
+      description: description,
+      type: 'article',
+      url: url,
+    },
+    alternates: {
+      canonical: url,
+    },
+  }
+}
 
 export async function generateStaticParams() {
   const posts = getAllPosts(['slug'])
