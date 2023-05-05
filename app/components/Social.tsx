@@ -1,4 +1,4 @@
-import { Twitter, GitHub, Note, Medium } from '../icons'
+import { TwitterSmall, GitHubSmall, NoteSmall, MediumSmall } from '../icons'
 import {
   TWITTER_HANDLE,
   GITHUB_HANDLE,
@@ -14,28 +14,28 @@ export default function Social() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Twitter size="4" />
+        <TwitterSmall />
       </a>
       <a
         href={`https://github.com/${GITHUB_HANDLE}`}
         target="_blank"
         rel="noopener noreferrer"
       >
-        <GitHub size="4" />
+        <GitHubSmall />
       </a>
       <a
         href={`https://note.com/${NOTE_HANDLE}`}
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Note size="4" />
+        <NoteSmall />
       </a>
       <a
         href={`https://medium.com/@${MEDIUM_HANDLE}`}
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Medium size="4" />
+        <MediumSmall />
       </a>
     </div>
   )
