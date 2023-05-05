@@ -26,7 +26,7 @@ export const metadata = {
 }
 
 export default function BlogPage() {
-  const posts = getAllPosts(['slug', 'title', 'date'])
+  const posts = getAllPosts(['slug', 'title', 'description', 'date'])
 
   return (
     <>
@@ -47,7 +47,7 @@ export default function BlogPage() {
               {posts.map((post) => (
                 <article
                   key={post.slug}
-                  className="border-t border-slate-200 py-4 dark:border-slate-700"
+                  className="border-t border-slate-200 py-6 dark:border-slate-700"
                 >
                   <h2 className="text-2xl font-bold dark:text-slate-100">
                     <Link href={`/blog/${post.slug}`}>{post.title}</Link>
@@ -60,14 +60,7 @@ export default function BlogPage() {
                       {format(new Date(post.date), 'yyyy MMM dd')}
                     </time>
                   </div>
-                  <div className="mt-4">
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="text-blue-500 hover:text-blue-400"
-                    >
-                      Read Post
-                    </Link>
-                  </div>
+                  <p className="mt-4">{post.description}</p>
                 </article>
               ))}
             </article>
