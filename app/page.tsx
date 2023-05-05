@@ -1,59 +1,121 @@
 import Link from 'next/link'
-import { format } from 'date-fns'
+import Image from 'next/image'
 
-import { getAllPosts } from '../utils/blog'
 import Container from './components/Container'
 import Copyright from './components/Copyright'
-import Social from './components/Social'
-import Vercel from './components/Vercel'
+
+import profilePic from '@/app/me.png'
+import {
+  Twitter,
+  GitHub,
+  Note,
+  Medium,
+  ArrowTopRightOnSquare,
+} from '@/app/icons'
+import {
+  SITE_NAME,
+  PROFILE_NAME,
+  PROFILE_BIO,
+  TWITTER_HANDLE,
+  GITHUB_HANDLE,
+  NOTE_HANDLE,
+  MEDIUM_HANDLE,
+} from '@/utils/constants'
 
 export default function RootPage() {
-  const posts = getAllPosts(['slug', 'title', 'date'])
-
   return (
     <Container>
-      <header className="flex h-32 items-center justify-center">
-        <div className="text-4xl">
-          <Social />
-        </div>
-      </header>
-
-      <main className="pb-16">
-        <h1 className="text-center text-3xl font-extrabold dark:text-slate-100">{`Koshi Matsumoto's website`}</h1>
-        <div className="mt-2">
-          <div className="text-center text-sm text-slate-400">
-            <Copyright />
+      <main className="py-16">
+        <div className="flex justify-center space-x-8">
+          <div className="hidden sm:block sm:w-1/4">
+            <Image
+              src={profilePic}
+              alt={PROFILE_NAME}
+              className="rounded-full"
+            />
           </div>
-          <div>
-            <Vercel />
-          </div>
-        </div>
 
-        <article className="mt-8">
-          {posts.map((post) => (
-            <article
-              key={post.slug}
-              className="border-t border-slate-200 py-4 dark:border-slate-800"
-            >
-              <h2 className="text-2xl font-bold dark:text-slate-100">
-                <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-              </h2>
-              <div className="mt-1">
-                <time dateTime={post.date} className="text-sm text-slate-400">
-                  {format(new Date(post.date), 'yyyy MMM dd')}
-                </time>
-              </div>
-              <div className="mt-4">
+          <div className="sm:w-3/4">
+            <h1 className="text-3xl font-extrabold dark:text-slate-100">
+              {SITE_NAME}
+            </h1>
+
+            <div className="mt-4 sm:hidden">
+              <Image
+                src={profilePic}
+                alt={PROFILE_NAME}
+                width={100}
+                height={100}
+                className="rounded-full"
+              />
+            </div>
+
+            <p className="my-4">{PROFILE_BIO}</p>
+
+            <div className="space-y-2">
+              <a
+                href={`https://twitter.com/${TWITTER_HANDLE}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between rounded-md border border-slate-200 p-4 hover:bg-slate-100 dark:border-slate-700 dark:hover:bg-slate-800"
+              >
+                <div className="flex items-center space-x-3">
+                  <Twitter />
+                  <span>Twitter</span>
+                </div>
+                <ArrowTopRightOnSquare />
+              </a>
+              <a
+                href={`https://github.com/${GITHUB_HANDLE}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between rounded-md border border-slate-200 p-4 hover:bg-slate-100 dark:border-slate-700 dark:hover:bg-slate-800"
+              >
+                <div className="flex items-center space-x-3">
+                  <GitHub />
+                  <span>GitHub</span>
+                </div>
+                <ArrowTopRightOnSquare />
+              </a>
+              <a
+                href={`https://note.com/${NOTE_HANDLE}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between rounded-md border border-slate-200 p-4 hover:bg-slate-100 dark:border-slate-700 dark:hover:bg-slate-800"
+              >
+                <div className="flex items-center space-x-3">
+                  <Note />
+                  <span>note</span>
+                </div>
+                <ArrowTopRightOnSquare />
+              </a>
+              <a
+                href={`https://medium.com/@${MEDIUM_HANDLE}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between rounded-md border border-slate-200 p-4 hover:bg-slate-100 dark:border-slate-700 dark:hover:bg-slate-800"
+              >
+                <div className="flex items-center space-x-3">
+                  <Medium />
+                  <span>Medium</span>
+                </div>
+                <ArrowTopRightOnSquare />
+              </a>
+            </div>
+
+            <div className="mt-4 border-t border-slate-200 dark:border-slate-700">
+              <div className="my-4">
                 <Link
-                  href={`/blog/${post.slug}`}
-                  className="text-blue-500 hover:text-blue-400"
+                  href="/blog"
+                  className="text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
                 >
-                  Read Post
+                  Blog (example)
                 </Link>
               </div>
-            </article>
-          ))}
-        </article>
+              <Copyright />
+            </div>
+          </div>
+        </div>
       </main>
     </Container>
   )
