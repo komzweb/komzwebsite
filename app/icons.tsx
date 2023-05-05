@@ -1,4 +1,4 @@
-export function Home() {
+export function Home({ size }: { size: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,7 +6,7 @@ export function Home() {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
-      className="h-6 w-6"
+      className={`h-${size} w-${size}`}
     >
       <path
         strokeLinecap="round"
@@ -17,13 +17,13 @@ export function Home() {
   )
 }
 
-export function Twitter() {
+export function Twitter({ size }: { size: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       enableBackground="new 0 0 248 204"
       viewBox="0 0 248 204"
-      className="h-6 w-6"
+      className={`h-${size} w-${size}`}
     >
       <path
         d="m221.95 51.29c.15 2.17.15 4.34.15 6.53 0 66.73-50.8 143.69-143.69 143.69v-.04c-27.44.04-54.31-7.82-77.41-22.64 3.99.48 8 .72 12.02.73 22.74.02 44.83-7.61 62.72-21.66-21.61-.41-40.56-14.5-47.18-35.07 7.57 1.46 15.37 1.16 22.8-.87-23.56-4.76-40.51-25.46-40.51-49.5 0-.22 0-.43 0-.64 7.02 3.91 14.88 6.08 22.92 6.32-22.19-14.83-29.03-44.35-15.63-67.43 25.64 31.55 63.47 50.73 104.08 52.76-4.07-17.54 1.49-35.92 14.61-48.25 20.34-19.12 52.33-18.14 71.45 2.19 11.31-2.23 22.15-6.38 32.07-12.26-3.77 11.69-11.66 21.62-22.2 27.93 10.01-1.18 19.79-3.86 29-7.95-6.78 10.16-15.32 19.01-25.2 26.16z"
@@ -33,12 +33,12 @@ export function Twitter() {
   )
 }
 
-export function GitHub() {
+export function GitHub({ size }: { size: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 98 96"
-      className="h-6 w-6"
+      className={`h-${size} w-${size}`}
     >
       <path
         fillRule="evenodd"
@@ -50,12 +50,12 @@ export function GitHub() {
   )
 }
 
-export function Note() {
+export function Note({ size }: { size: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 493 493"
-      className="h-6 w-6"
+      className={`h-${size} w-${size}`}
       fill="none"
     >
       <rect
@@ -74,12 +74,12 @@ export function Note() {
   )
 }
 
-export function Medium() {
+export function Medium({ size }: { size: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1043.63 592.71"
-      className="h-6 w-6"
+      className={`h-${size} w-${size}`}
       fill="currentColor"
     >
       <g id="Layer_2" data-name="Layer 2">
@@ -93,7 +93,7 @@ export function Medium() {
   )
 }
 
-export function ArrowTopRightOnSquare() {
+export function ArrowTopRightOnSquare({ size }: { size: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +101,7 @@ export function ArrowTopRightOnSquare() {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
-      className="h-6 w-6"
+      className={`h-${size} w-${size}`}
     >
       <path
         strokeLinecap="round"
