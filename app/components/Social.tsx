@@ -4,7 +4,7 @@ import {
   GITHUB_HANDLE,
   NOTE_HANDLE,
   MEDIUM_HANDLE,
-} from '../../utils/constants'
+} from '@/utils/constants'
 
 export default function Social() {
   return (

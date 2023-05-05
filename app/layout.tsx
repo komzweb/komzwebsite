@@ -1,7 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 
-import { SITE_NAME, SITE_URL, TWITTER_HANDLE } from '../utils/constants'
+import { SITE_NAME, SITE_URL, TWITTER_HANDLE } from '@/utils/constants'
 
 const inter = Inter({ subsets: ['latin'] })
 

@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/server'
 
-import { SITE_NAME } from '../utils/constants'
+import { SITE_NAME } from '@/utils/constants'
 
 export default function RootOG() {
   return new ImageResponse(

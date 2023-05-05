@@ -1,4 +1,4 @@
-import { SITE_NAME } from '../../utils/constants'
+import { SITE_NAME } from '@/utils/constants'
 
 export default function Copyright() {
   return (
