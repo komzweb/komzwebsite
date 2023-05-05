@@ -12,7 +12,12 @@ export default function Header() {
             <Link href="/">
               <Home />
             </Link>
-            <Link href="/blog">Blog</Link>
+            <Link
+              href="/blog"
+              className="text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
+            >
+              Blog
+            </Link>
           </div>
         </Container>
       </div>
