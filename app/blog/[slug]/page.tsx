@@ -1,13 +1,12 @@
-import Link from 'next/link'
 import { format } from 'date-fns'
-import { FaHome } from 'react-icons/fa'
 import { serialize } from 'next-mdx-remote/serialize'
 import rehypePrism from 'rehype-prism-plus'
 
 import { getAllPosts, getPost } from '../../../utils/blog'
 import { SITE_NAME, SITE_URL } from '../../../utils/constants'
 import Container from '../../components/Container'
-import Social from '../../components/Social'
+import Footer from '../../components/Footer'
+import Header from '../../components/Header'
 import Content from './components/Content'
 import './styles/prism-night-owl.css'
 
@@ -60,22 +59,7 @@ export default async function PostPage({
 
   return (
     <>
-      <header className="sticky top-0 z-50">
-        <div className="border-b border-slate-200 bg-white/95 dark:border-slate-800 dark:bg-slate-900/95">
-          <Container>
-            <div className="flex h-16 items-center justify-between">
-              <Link href="/" className="text-3xl">
-                <FaHome />
-              </Link>
-
-              <div className="text-2xl">
-                <Social />
-              </div>
-            </div>
-          </Container>
-        </div>
-      </header>
-
+      <Header />
       <main>
         <Container>
           <article lang={post.lang} className="pb-16 pt-8">
@@ -91,6 +75,7 @@ export default async function PostPage({
           </article>
         </Container>
       </main>
+      <Footer />
     </>
   )
 }
