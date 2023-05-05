@@ -1,25 +1,41 @@
-import { FaGithub, FaTwitter } from 'react-icons/fa'
-
-import { GITHUB_HANDLE, TWITTER_HANDLE } from '../../utils/constants'
+import { Twitter, GitHub, Note, Medium } from '../icons'
+import {
+  TWITTER_HANDLE,
+  GITHUB_HANDLE,
+  NOTE_HANDLE,
+  MEDIUM_HANDLE,
+} from '../../utils/constants'
 
 export default function Social() {
   return (
     <div className="flex space-x-4">
       <a
-        href={`https://github.com/${GITHUB_HANDLE}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hover:text-blue-500 dark:hover:text-slate-100"
-      >
-        <FaGithub />
-      </a>
-      <a
         href={`https://twitter.com/${TWITTER_HANDLE}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="hover:text-blue-500 dark:hover:text-slate-100"
       >
-        <FaTwitter />
+        <Twitter size="4" />
+      </a>
+      <a
+        href={`https://github.com/${GITHUB_HANDLE}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <GitHub size="4" />
+      </a>
+      <a
+        href={`https://note.com/${NOTE_HANDLE}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Note size="4" />
+      </a>
+      <a
+        href={`https://medium.com/@${MEDIUM_HANDLE}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Medium size="4" />
       </a>
     </div>
   )
