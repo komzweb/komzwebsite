@@ -89,7 +89,7 @@ export default function RootPage() {
                 </div>
                 <ArrowTopRightOnSquare />
               </a>
-              <a
+              {/* <a
                 href={`https://medium.com/@${MEDIUM_HANDLE}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -100,7 +100,7 @@ export default function RootPage() {
                   <span>Medium</span>
                 </div>
                 <ArrowTopRightOnSquare />
-              </a>
+              </a> */}
             </div>
 
             <div className="mt-4 border-t border-slate-200 dark:border-slate-700">

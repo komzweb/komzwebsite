@@ -30,13 +30,13 @@ export default function Social() {
       >
         <NoteSmall />
       </a>
-      <a
+      {/* <a
         href={`https://medium.com/@${MEDIUM_HANDLE}`}
         target="_blank"
         rel="noopener noreferrer"
       >
         <MediumSmall />
-      </a>
+      </a> */}
     </div>
   )
 }
