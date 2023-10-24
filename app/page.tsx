@@ -61,7 +61,7 @@ export default function RootPage() {
               >
                 <div className="flex items-center space-x-3">
                   <Twitter />
-                  <span>Twitter</span>
+                  <span>X/Twitter</span>
                 </div>
                 <ArrowTopRightOnSquare />
               </a>
