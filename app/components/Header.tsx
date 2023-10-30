@@ -22,12 +22,6 @@ export default function Header() {
                 Blog
               </Link>
               <Link
-                href="/gallery"
-                className="text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
-              >
-                Gallery
-              </Link>
-              <Link
                 href="/projects"
                 className="text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
               >
