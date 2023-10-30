@@ -1,8 +1,8 @@
-import Link from 'next/link'
 import Image from 'next/image'
 
 import Container from './components/Container'
 import Copyright from './components/Copyright'
+import Menu from './components/Menu'
 
 import profilePic from '@/app/me.png'
 import {
@@ -33,6 +33,7 @@ export default function RootPage() {
               alt={PROFILE_NAME}
               className="rounded-full"
             />
+            <Menu />
           </div>
 
           <div className="sm:w-3/4">
@@ -40,7 +41,11 @@ export default function RootPage() {
               {SITE_NAME}
             </h1>
 
-            <div className="mt-4 sm:hidden">
+            <div className="sm:hidden">
+              <Menu />
+            </div>
+
+            <div className="mt-4 flex sm:hidden">
               <Image
                 src={profilePic}
                 alt={PROFILE_NAME}
@@ -103,15 +108,7 @@ export default function RootPage() {
               </a> */}
             </div>
 
-            <div className="mt-4 border-t border-slate-200 dark:border-slate-700">
-              <div className="my-4">
-                <Link
-                  href="/blog"
-                  className="text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
-                >
-                  Blog
-                </Link>
-              </div>
+            <div className="mt-4">
               <Copyright />
             </div>
           </div>
