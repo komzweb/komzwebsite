@@ -17,7 +17,10 @@ import emmaWatson from './user-images/emma-watson.png'
 export default function AcmeStoreHome() {
   return (
     <div className="flex min-h-screen flex-col bg-zinc-900 font-sans text-base text-zinc-100">
-      <header className="flex items-center justify-between bg-zinc-900 p-4 shadow-md">
+      <div className="bg-zinc-800 px-4 py-2 text-center text-sm text-zinc-300">
+        This is a demo website built with Vercel v0 and DALL-E 3.
+      </div>
+      <header className="flex items-center justify-between border-b border-zinc-700 bg-zinc-900 p-4 shadow-md">
         <div className="flex items-center space-x-4">
           <svg
             className=" h-8 w-8"
