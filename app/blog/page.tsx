@@ -39,8 +39,8 @@ export default function BlogPage() {
             </h1>
 
             <p className="mt-8">
-              These posts are samples created for testing the Markdown/MDX blog
-              feature.
+              These are sample posts created to experiment with Markdown/MDX
+              blogging and syntax highlighting.
             </p>
 
             <article className="mt-8">
