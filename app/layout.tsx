@@ -1,9 +1,7 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { GeistSans, GeistMono } from 'geist/font'
 import { ThemeProvider } from '@/components/theme-provider'
 import { SITE_NAME, SITE_URL, TWITTER_HANDLE } from '@/utils/constants'
-
-const inter = Inter({ subsets: ['latin'] })
 
 const description = 'Built with Next.js, Tailwind CSS, and Vercel'
 
@@ -45,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body>
         <ThemeProvider
           attribute="class"
