@@ -22,7 +22,7 @@ export default function ProjectsPage() {
           </p>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
             <Link href={`/projects/acme-store`}>
-              <div className="overflow-hidden rounded-lg border border-slate-200 p-6 hover:bg-slate-100 dark:border-slate-800">
+              <div className="overflow-hidden rounded-lg border border-slate-200 p-6 hover:bg-slate-100 dark:border-slate-800 dark:hover:bg-slate-900">
                 <Image
                   alt="Project Image"
                   className="mb-6"
@@ -42,7 +42,7 @@ export default function ProjectsPage() {
               </div>
             </Link>
             <Link href={`#`}>
-              <div className="overflow-hidden rounded-lg border border-slate-200 p-6 hover:bg-slate-100 dark:border-slate-800">
+              <div className="overflow-hidden rounded-lg border border-slate-200 p-6 hover:bg-slate-100 dark:border-slate-800 dark:hover:bg-slate-900">
                 <Image
                   alt="Project Image"
                   className="mb-6"
@@ -61,7 +61,7 @@ export default function ProjectsPage() {
               </div>
             </Link>
             <Link href={`#`}>
-              <div className="overflow-hidden rounded-lg border border-slate-200 p-6 hover:bg-slate-100 dark:border-slate-800">
+              <div className="overflow-hidden rounded-lg border border-slate-200 p-6 hover:bg-slate-100 dark:border-slate-800 dark:hover:bg-slate-900">
                 <Image
                   alt="Project Image"
                   className="mb-6"
@@ -80,7 +80,7 @@ export default function ProjectsPage() {
               </div>
             </Link>
             <Link href={`#`}>
-              <div className="overflow-hidden rounded-lg border border-slate-200 p-6 hover:bg-slate-100 dark:border-slate-800">
+              <div className="overflow-hidden rounded-lg border border-slate-200 p-6 hover:bg-slate-100 dark:border-slate-800 dark:hover:bg-slate-900">
                 <Image
                   alt="Project Image"
                   className="mb-6"

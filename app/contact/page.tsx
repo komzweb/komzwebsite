@@ -22,7 +22,7 @@ export default function ContactPage() {
             work. The contact information and location below does not exist.
           </p>
           <div className="space-y-8">
-            <div className="rounded border border-slate-200 p-6">
+            <div className="rounded border border-slate-200 p-6 dark:border-slate-800">
               <form className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="name">Name</Label>

@@ -1,6 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-
+import { ThemeProvider } from '@/components/theme-provider'
 import { SITE_NAME, SITE_URL, TWITTER_HANDLE } from '@/utils/constants'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -46,8 +46,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
-      <body className="text-slate-900 dark:bg-slate-900 dark:text-slate-300">
-        {children}
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )

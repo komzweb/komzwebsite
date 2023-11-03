@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { ModeToggle } from '@/components/mode-toggle'
 import { Button } from '@/components/ui/button'
 import {
   CardTitle,
@@ -16,11 +17,11 @@ import emmaWatson from './user-images/emma-watson.png'
 
 export default function AcmeStoreHome() {
   return (
-    <div className="flex min-h-screen flex-col bg-zinc-900 font-sans text-base text-zinc-100">
-      <div className="bg-zinc-800 px-4 py-2 text-center text-sm text-zinc-300">
+    <div className="flex min-h-screen flex-col font-sans text-base dark:bg-slate-900 dark:text-slate-100">
+      <div className="bg-slate-100 px-4 py-2 text-center text-sm dark:bg-slate-800 dark:text-slate-300">
         This is a demo website built with Vercel v0 and DALL-E 3.
       </div>
-      <header className="flex items-center justify-between border-b border-zinc-700 bg-zinc-900 p-4 shadow-md">
+      <header className="flex items-center justify-between border-b p-4 shadow-md dark:border-slate-700 dark:bg-slate-900">
         <div className="flex items-center space-x-4">
           <svg
             className=" h-8 w-8"
@@ -40,10 +41,8 @@ export default function AcmeStoreHome() {
             <path d="M2 7h20" />
             <path d="M22 7v3a2 2 0 0 1-2 2v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12v0a2 2 0 0 1-2-2V7" />
           </svg>
-          <span className="hidden text-2xl font-bold text-zinc-100 sm:block">
-            Acme Store
-          </span>
-          <span className="text-xs text-zinc-400">
+          <span className="hidden text-2xl font-bold sm:block">Acme Store</span>
+          <span className="text-xs dark:text-slate-400">
             by{' '}
             <Link href={`/`} className="hover:underline">
               komz
@@ -52,13 +51,13 @@ export default function AcmeStoreHome() {
         </div>
         <nav className="space-x-4">
           <Link
-            className="text-zinc-300 hover:underline"
+            className="hover:underline dark:text-slate-300"
             href="/projects/acme-store/pricing"
           >
             Pricing
           </Link>
           <Link
-            className="rounded border border-zinc-500 px-3 py-1 text-zinc-300 hover:border-zinc-300 hover:text-zinc-100"
+            className="rounded border border-slate-600 px-3 py-1 hover:border-slate-400 hover:text-slate-500 dark:border-slate-400 dark:text-slate-300 dark:hover:border-slate-300 dark:hover:text-slate-100"
             href="/projects/acme-store/login"
           >
             Login
@@ -79,25 +78,25 @@ export default function AcmeStoreHome() {
               }}
             />
           </div>
-          <div className="absolute bottom-0 left-0 right-0 top-0 flex items-center justify-center bg-zinc-800 bg-opacity-60 px-4 py-20">
+          <div className="absolute bottom-0 left-0 right-0 top-0 flex items-center justify-center bg-slate-800 bg-opacity-60 px-4 py-20">
             <div className="text-center">
-              <h1 className="text-4xl font-bold text-zinc-100">
+              <h1 className="text-4xl font-bold text-slate-100">
                 Welcome to Acme Store
               </h1>
-              <p className="mt-2 text-lg text-zinc-400">
+              <p className="mt-2 text-lg text-slate-300">
                 Your one-stop solution for all your needs
               </p>
-              <Button className="mt-4 rounded-lg bg-emerald-500 px-6 py-2 text-white">
+              <Button className="mt-4 rounded-lg bg-emerald-500 px-6 py-2 text-white dark:hover:text-black">
                 Shop Now
               </Button>
             </div>
           </div>
         </section>
         <section
-          className="grid gap-8 bg-zinc-900 px-4 py-20 sm:px-8 md:grid-cols-2 md:px-16 lg:grid-cols-3 lg:px-32"
+          className="grid gap-8 px-4 py-20 dark:bg-slate-900 sm:px-8 md:grid-cols-2 md:px-16 lg:grid-cols-3 lg:px-32"
           id="features"
         >
-          <Card className="border-zinc-500 bg-zinc-800">
+          <Card className="border-slate-500 bg-slate-100 dark:bg-slate-800">
             <CardContent className="flex items-start gap-4 p-6">
               <svg
                 className=" h-8 w-8 text-emerald-500"
@@ -115,17 +114,17 @@ export default function AcmeStoreHome() {
                 <polygon points="2 19 11 12 2 5 2 19" />
               </svg>
               <div>
-                <CardTitle className="mb-2 text-zinc-100">
+                <CardTitle className="mb-2 dark:text-slate-100">
                   Fast Delivery
                 </CardTitle>
-                <CardDescription className="text-zinc-100">
+                <CardDescription className="dark:text-slate-100">
                   Get your products delivered in no time with our fast shipping
                   services.
                 </CardDescription>
               </div>
             </CardContent>
           </Card>
-          <Card className="border-zinc-500 bg-zinc-800">
+          <Card className="border-slate-500 bg-slate-100 dark:bg-slate-800">
             <CardContent className="flex items-start gap-4 p-6">
               <svg
                 className=" h-8 w-8 text-emerald-500"
@@ -144,17 +143,17 @@ export default function AcmeStoreHome() {
                 <path d="m15.5 7.5 3 3L22 7l-3-3" />
               </svg>
               <div>
-                <CardTitle className="mb-2 text-zinc-100">
+                <CardTitle className="mb-2 dark:text-slate-100">
                   High Quality
                 </CardTitle>
-                <CardDescription className="text-zinc-100">
+                <CardDescription className="dark:text-slate-100">
                   All our products are of the highest quality with 100%
                   satisfaction guarantee.
                 </CardDescription>
               </div>
             </CardContent>
           </Card>
-          <Card className="border-zinc-500 bg-zinc-800">
+          <Card className="border-slate-500 bg-slate-100 dark:bg-slate-800">
             <CardContent className="flex items-start gap-4 p-6">
               <svg
                 className=" h-8 w-8 text-emerald-500"
@@ -173,10 +172,10 @@ export default function AcmeStoreHome() {
                 <path d="M12 17h.01" />
               </svg>
               <div>
-                <CardTitle className="mb-2 text-zinc-100">
+                <CardTitle className="mb-2 dark:text-slate-100">
                   24/7 Support
                 </CardTitle>
-                <CardDescription className="text-zinc-100">
+                <CardDescription className="dark:text-slate-100">
                   We offer 24/7 support for all your queries and issues.
                 </CardDescription>
               </div>
@@ -184,10 +183,10 @@ export default function AcmeStoreHome() {
           </Card>
         </section>
         <section
-          className="grid gap-8 bg-zinc-800 px-4 py-20 sm:px-8 md:grid-cols-2 md:px-16 lg:px-32 xl:grid-cols-4"
+          className="grid gap-8 bg-slate-100 px-4 py-20 dark:bg-slate-800 sm:px-8 md:grid-cols-2 md:px-16 lg:px-32 xl:grid-cols-4"
           id="testimonials"
         >
-          <Card className="border-zinc-500 bg-zinc-700">
+          <Card className="border-slate-500 bg-slate-100 dark:bg-slate-700">
             <CardContent className="flex flex-col items-center gap-4 p-6">
               <Image
                 alt="John Doe"
@@ -200,14 +199,14 @@ export default function AcmeStoreHome() {
                 }}
                 width="80"
               />
-              <CardTitle className="text-zinc-100">John Doe</CardTitle>
-              <CardDescription className="text-zinc-100">
+              <CardTitle className="dark:text-slate-100">John Doe</CardTitle>
+              <CardDescription className="dark:text-slate-100">
                 Acme Store has the best products. Fast delivery and excellent
                 customer service. Highly recommended!
               </CardDescription>
             </CardContent>
           </Card>
-          <Card className="border-zinc-500 bg-zinc-700">
+          <Card className="border-slate-500 bg-slate-100 dark:bg-slate-700">
             <CardContent className="flex flex-col items-center gap-4 p-6">
               <Image
                 alt="Jane Smith"
@@ -220,14 +219,14 @@ export default function AcmeStoreHome() {
                 }}
                 width="80"
               />
-              <CardTitle className="text-zinc-100">Jane Smith</CardTitle>
-              <CardDescription className="text-zinc-100">
+              <CardTitle className="dark:text-slate-100">Jane Smith</CardTitle>
+              <CardDescription className="dark:text-slate-100">
                 I love shopping at Acme Store. High quality products and always
                 on time. Keep up the good work!
               </CardDescription>
             </CardContent>
           </Card>
-          <Card className="border-zinc-500 bg-zinc-700">
+          <Card className="border-slate-500 bg-slate-100 dark:bg-slate-700">
             <CardContent className="flex flex-col items-center gap-4 p-6">
               <Image
                 alt="Samuel Jackson"
@@ -240,14 +239,16 @@ export default function AcmeStoreHome() {
                 }}
                 width="80"
               />
-              <CardTitle className="text-zinc-100">Samuel Jackson</CardTitle>
-              <CardDescription className="text-zinc-100">
+              <CardTitle className="dark:text-slate-100">
+                Samuel Jackson
+              </CardTitle>
+              <CardDescription className="dark:text-slate-100">
                 The variety of products at Acme Store is amazing. I found
                 everything I needed in one place!
               </CardDescription>
             </CardContent>
           </Card>
-          <Card className="border-zinc-500 bg-zinc-700">
+          <Card className="border-slate-500 bg-slate-100 dark:bg-slate-700">
             <CardContent className="flex flex-col items-center gap-4 p-6">
               <Image
                 alt="Emma Watson"
@@ -260,8 +261,8 @@ export default function AcmeStoreHome() {
                 }}
                 width="80"
               />
-              <CardTitle className="text-zinc-100">Emma Watson</CardTitle>
-              <CardDescription className="text-zinc-100">
+              <CardTitle className="dark:text-slate-100">Emma Watson</CardTitle>
+              <CardDescription className="dark:text-slate-100">
                 Acme Store never disappoints. Their products are top notch and
                 the customer service is incredible. A+++
               </CardDescription>
@@ -269,68 +270,72 @@ export default function AcmeStoreHome() {
           </Card>
         </section>
       </main>
-      <footer className="bg-zinc-900 p-4">
-        <div className="flex items-center justify-between">
-          <div className="flex space-x-2">
-            <Link className="hover:underline" href="#">
-              <svg
-                className=" h-6 w-6 text-zinc-300"
-                fill="none"
-                height="24"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-              </svg>
-              <span className="sr-only">Facebook</span>
-            </Link>
-            <Link className="hover:underline" href="#">
-              <svg
-                className=" h-6 w-6 text-zinc-300"
-                fill="none"
-                height="24"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-              </svg>
-              <span className="sr-only">Twitter</span>
-            </Link>
-            <Link className="hover:underline" href="#">
-              <svg
-                className=" h-6 w-6 text-zinc-300"
-                fill="none"
-                height="24"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect height="20" rx="5" ry="5" width="20" x="2" y="2" />
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-              </svg>
-              <span className="sr-only">Instagram</span>
-            </Link>
-          </div>
-          <div className="text-sm text-zinc-400">
+      <footer className="p-4 dark:bg-slate-900">
+        <div className="items-center justify-between space-y-4 sm:flex sm:space-y-0">
+          <div className="text-sm text-slate-400">
             © 2023 Acme Store by{' '}
             <Link href={`/`} className="hover:underline">
               komz
             </Link>
+          </div>
+          <div className="flex items-center space-x-4">
+            <ModeToggle />
+
+            <div className="flex space-x-2">
+              <Link className="hover:underline" href="#">
+                <svg
+                  className=" h-6 w-6 text-slate-600 dark:text-slate-300"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg>
+                <span className="sr-only">Facebook</span>
+              </Link>
+              <Link className="hover:underline" href="#">
+                <svg
+                  className=" h-6 w-6 text-slate-600 dark:text-slate-300"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+                </svg>
+                <span className="sr-only">Twitter</span>
+              </Link>
+              <Link className="hover:underline" href="#">
+                <svg
+                  className=" h-6 w-6 text-slate-600 dark:text-slate-300"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect height="20" rx="5" ry="5" width="20" x="2" y="2" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                </svg>
+                <span className="sr-only">Instagram</span>
+              </Link>
+            </div>
           </div>
         </div>
       </footer>

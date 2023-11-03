@@ -3,11 +3,11 @@ import { Button } from '@/components/ui/button'
 
 export default function AcmeStorePricing() {
   return (
-    <div className="flex min-h-screen flex-col bg-zinc-900 font-sans text-base text-zinc-100">
-      <div className="bg-zinc-800 px-4 py-2 text-center text-sm text-zinc-300">
+    <div className="flex min-h-screen flex-col font-sans text-base dark:bg-slate-900 dark:text-slate-100">
+      <div className="bg-slate-100 px-4 py-2 text-center text-sm dark:bg-slate-800 dark:text-slate-300">
         This is a demo website built with Vercel v0 and DALL-E 3.
       </div>
-      <header className="flex items-center justify-between border-b border-zinc-700 bg-zinc-900 p-4 shadow-md">
+      <header className="flex items-center justify-between border-b p-4 shadow-md dark:border-slate-700 dark:bg-slate-900">
         <div className="flex items-center space-x-4">
           <Link href={`/projects/acme-store`}>
             <svg
@@ -30,11 +30,11 @@ export default function AcmeStorePricing() {
             </svg>
           </Link>
           <Link href={`/projects/acme-store`}>
-            <span className="hidden text-2xl font-bold text-zinc-100 sm:block">
+            <span className="hidden text-2xl font-bold sm:block">
               Acme Store
             </span>
           </Link>
-          <span className="text-xs text-zinc-400">
+          <span className="text-xs dark:text-slate-400">
             by{' '}
             <Link href={`/`} className="hover:underline">
               komz
@@ -43,13 +43,13 @@ export default function AcmeStorePricing() {
         </div>
         <nav className="space-x-4">
           <Link
-            className="text-zinc-300 hover:underline"
+            className="hover:underline dark:text-slate-300"
             href="/projects/acme-store/pricing"
           >
             Pricing
           </Link>
           <Link
-            className="rounded border border-zinc-500 px-3 py-1 text-zinc-300 hover:border-zinc-300 hover:text-zinc-100"
+            className="rounded border border-slate-600 px-3 py-1 hover:border-slate-400 hover:text-slate-500 dark:border-slate-400 dark:text-slate-300 dark:hover:border-slate-300 dark:hover:text-slate-100"
             href="/projects/acme-store/login"
           >
             Login
@@ -60,7 +60,7 @@ export default function AcmeStorePricing() {
         <h1 className="mb-8 text-3xl font-extrabold">Pricing</h1>
         <h2 className="mb-4 text-xl font-bold">Choose your plan:</h2>
         <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <div className="flex flex-col justify-between rounded-lg border border-zinc-500 bg-zinc-800 p-4">
+          <div className="flex flex-col justify-between rounded-lg border border-slate-500 bg-slate-100 p-4 dark:bg-slate-800">
             <div>
               <h3 className="text-lg font-bold">Basic Plan</h3>
               <p className="mb-2 text-2xl font-bold text-green-500">$9.99</p>
@@ -69,11 +69,14 @@ export default function AcmeStorePricing() {
                 <li>Feature Two</li>
               </ul>
             </div>
-            <Button variant="secondary" className="w-full">
+            <Button
+              variant="secondary"
+              className="w-full bg-slate-900 text-white hover:bg-slate-700 dark:bg-slate-300 dark:text-black dark:hover:bg-slate-100"
+            >
               Subscribe
             </Button>
           </div>
-          <div className="flex flex-col justify-between rounded-lg border border-zinc-500 bg-zinc-800 p-4">
+          <div className="flex flex-col justify-between rounded-lg border border-slate-500 bg-slate-100 p-4 dark:bg-slate-800">
             <div>
               <h3 className="text-lg font-bold">Pro Plan</h3>
               <p className="mb-2 text-2xl font-bold text-green-500">$19.99</p>
@@ -83,11 +86,14 @@ export default function AcmeStorePricing() {
                 <li>Feature Three</li>
               </ul>
             </div>
-            <Button variant="secondary" className="w-full">
+            <Button
+              variant="secondary"
+              className="w-full bg-slate-900 text-white hover:bg-slate-700 dark:bg-slate-300 dark:text-black dark:hover:bg-slate-100"
+            >
               Subscribe
             </Button>
           </div>
-          <div className="flex flex-col justify-between rounded-lg border border-zinc-500 bg-zinc-800 p-4">
+          <div className="flex flex-col justify-between rounded-lg border border-slate-500 bg-slate-100 p-4 dark:bg-slate-800">
             <div>
               <h3 className="text-lg font-bold">Premium Plan</h3>
               <p className="mb-2 text-2xl font-bold text-green-500">$29.99</p>
@@ -98,7 +104,10 @@ export default function AcmeStorePricing() {
                 <li>Feature Four</li>
               </ul>
             </div>
-            <Button variant="secondary" className="w-full">
+            <Button
+              variant="secondary"
+              className="w-full bg-slate-900 text-white hover:bg-slate-700 dark:bg-slate-300 dark:text-black dark:hover:bg-slate-100"
+            >
               Subscribe
             </Button>
           </div>
@@ -106,27 +115,27 @@ export default function AcmeStorePricing() {
         <h2 className="mb-4 text-xl font-bold">Frequently Asked Questions:</h2>
         <div className="space-y-2">
           <details>
-            <summary className="mb-2 font-bold text-zinc-400 hover:cursor-pointer">
+            <summary className="mb-2 font-bold text-slate-400 hover:cursor-pointer">
               How do I cancel my subscription?
             </summary>
-            <p className="ml-4 text-zinc-100">
+            <p className="ml-4 dark:text-slate-100">
               You can cancel your subscription at any time in your account
               settings.
             </p>
           </details>
           <details>
-            <summary className="mb-2 font-bold text-zinc-400 hover:cursor-pointer">
+            <summary className="mb-2 font-bold text-slate-400 hover:cursor-pointer">
               What payment methods do you accept?
             </summary>
-            <p className="ml-4 text-zinc-100">
+            <p className="ml-4 dark:text-slate-100">
               We accept all major credit cards, PayPal, and Google Pay.
             </p>
           </details>
           <details>
-            <summary className="mb-2 font-bold text-zinc-400 hover:cursor-pointer">
+            <summary className="mb-2 font-bold text-slate-400 hover:cursor-pointer">
               Can I change my subscription plan later?
             </summary>
-            <p className="ml-4 text-zinc-100">
+            <p className="ml-4 dark:text-slate-100">
               Yes, you can upgrade or downgrade your plan at any time.
             </p>
           </details>

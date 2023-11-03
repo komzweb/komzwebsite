@@ -5,11 +5,11 @@ import { Label } from '@/components/ui/label'
 
 export default function AcmeStoreLogin() {
   return (
-    <div className="flex min-h-screen flex-col bg-zinc-900 font-sans text-base text-zinc-100">
-      <div className="bg-zinc-800 px-4 py-2 text-center text-sm text-zinc-300">
+    <div className="flex min-h-screen flex-col font-sans text-base dark:bg-slate-900 dark:text-slate-100">
+      <div className="bg-slate-100 px-4 py-2 text-center text-sm dark:bg-slate-800 dark:text-slate-300">
         This is a demo website built with Vercel v0 and DALL-E 3.
       </div>
-      <header className="flex items-center justify-between border-b border-zinc-700 bg-zinc-900 p-4 shadow-md">
+      <header className="flex items-center justify-between border-b p-4 shadow-md dark:border-slate-700 dark:bg-slate-900">
         <div className="flex items-center space-x-4">
           <Link href={`/projects/acme-store`}>
             <svg
@@ -32,11 +32,11 @@ export default function AcmeStoreLogin() {
             </svg>
           </Link>
           <Link href={`/projects/acme-store`}>
-            <span className="hidden text-2xl font-bold text-zinc-100 sm:block">
+            <span className="hidden text-2xl font-bold sm:block">
               Acme Store
             </span>
           </Link>
-          <span className="text-xs text-zinc-400">
+          <span className="text-xs dark:text-slate-400">
             by{' '}
             <Link href={`/`} className="hover:underline">
               komz
@@ -45,13 +45,13 @@ export default function AcmeStoreLogin() {
         </div>
         <nav className="space-x-4">
           <Link
-            className="text-zinc-300 hover:underline"
+            className="hover:underline dark:text-slate-300"
             href="/projects/acme-store/pricing"
           >
             Pricing
           </Link>
           <Link
-            className="rounded border border-zinc-500 px-3 py-1 text-zinc-300 hover:border-zinc-300 hover:text-zinc-100"
+            className="rounded border border-slate-600 px-3 py-1 hover:border-slate-400 hover:text-slate-500 dark:border-slate-400 dark:text-slate-300 dark:hover:border-slate-300 dark:hover:text-slate-100"
             href="/projects/acme-store/login"
           >
             Login
@@ -61,7 +61,7 @@ export default function AcmeStoreLogin() {
       <main className="mx-auto max-w-sm space-y-6 px-4 py-16">
         <div className="space-y-2 text-center">
           <h1 className="text-3xl font-bold">Login</h1>
-          <p className="text-zinc-500 dark:text-zinc-400">
+          <p className="text-slate-500 dark:text-slate-400">
             Enter your email and password to login to your account
           </p>
         </div>
@@ -69,7 +69,6 @@ export default function AcmeStoreLogin() {
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
             <Input
-              className="text-zinc-900"
               placeholder="m@example.com"
               id="email"
               type="email"
@@ -78,23 +77,18 @@ export default function AcmeStoreLogin() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="password">Password</Label>
-            <Input
-              className="text-zinc-900"
-              id="password"
-              type="password"
-              required
-            />
+            <Input id="password" type="password" required />
           </div>
           <Button
-            className="w-full bg-zinc-700 hover:bg-zinc-600"
+            className="w-full bg-slate-700 hover:bg-slate-500 dark:bg-slate-600 dark:text-white dark:hover:bg-slate-800"
             type="submit"
           >
             Login
           </Button>
           <div className="my-4 flex items-center">
-            <div className="flex-1 border-b border-zinc-300 dark:border-zinc-600" />
-            <span className="px-2 text-zinc-500 dark:text-zinc-400">or</span>
-            <div className="flex-1 border-b border-zinc-300 dark:border-zinc-600" />
+            <div className="flex-1 border-b border-slate-300 dark:border-slate-600" />
+            <span className="px-2 text-slate-500 dark:text-slate-400">or</span>
+            <div className="flex-1 border-b border-slate-300 dark:border-slate-600" />
           </div>
           <Button
             className="flex w-full items-center justify-center space-x-2 bg-blue-500 text-white"

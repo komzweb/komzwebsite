@@ -1,9 +1,5 @@
 import Image from 'next/image'
 
-import Container from './components/Container'
-import Copyright from './components/Copyright'
-import Menu from './components/Menu'
-
 import profilePic from '@/app/me.png'
 import {
   Twitter,
@@ -21,12 +17,17 @@ import {
   NOTE_HANDLE,
   MEDIUM_HANDLE,
 } from '@/utils/constants'
+import { ModeToggle } from '@/components/mode-toggle'
+
+import Container from './components/Container'
+import Copyright from './components/Copyright'
+import Menu from './components/Menu'
 
 export default function RootPage() {
   return (
     <Container>
       <main className="py-16">
-        <div className="flex justify-center space-x-8">
+        <div className="flex justify-center sm:space-x-8">
           <div className="hidden sm:block sm:w-1/4">
             <Image
               src={profilePic}
@@ -108,8 +109,9 @@ export default function RootPage() {
               </a> */}
             </div>
 
-            <div className="mt-4">
+            <div className="mt-4 flex items-center justify-between border-t border-slate-200 pt-4 dark:border-slate-800">
               <Copyright />
+              <ModeToggle />
             </div>
           </div>
         </div>
