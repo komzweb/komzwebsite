@@ -7,6 +7,7 @@ import { SITE_NAME, SITE_URL, TWITTER_HANDLE } from '@/utils/constants'
 const description = 'Built with Next.js, Tailwind CSS, and Vercel'
 
 export const metadata = {
+  metadataBase: new URL('https://komzwebsite.vercel.app'),
   title: SITE_NAME,
   description: description,
   openGraph: {
