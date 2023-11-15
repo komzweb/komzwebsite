@@ -1,5 +1,6 @@
 import './globals.css'
-import { GeistSans, GeistMono } from 'geist/font'
+import { GeistMono } from 'geist/font/mono'
+import { GeistSans } from 'geist/font/sans'
 import { ThemeProvider } from '@/components/theme-provider'
 import { SITE_NAME, SITE_URL, TWITTER_HANDLE } from '@/utils/constants'
 
