@@ -1,4 +1,15 @@
-import { ImageResponse, NextRequest } from 'next/server'
+import { ImageResponse } from 'next/og'
+import { NextRequest } from 'next/server'
+
+export const runtime = 'edge'
+
+export const alt = 'Blog Post'
+export const size = {
+  width: 1200,
+  height: 630,
+}
+
+export const contentType = 'image/png'
 
 export default function PostOG(req: NextRequest) {
   try {
@@ -19,9 +30,9 @@ export default function PostOG(req: NextRequest) {
         </div>
       ),
       {
-        width: 1200,
-        height: 630,
-      }
+        ...size,
+        fonts: [],
+      },
     )
   } catch (e: any) {
     console.log(`${e.message}`)
