@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import profilePic from '@/app/me.png'
+import profilePic from '@/app/me.jpeg'
 import {
   Twitter,
   GitHub,
