@@ -2,20 +2,20 @@ import Image from 'next/image'
 
 import profilePic from '@/app/me.jpeg'
 import {
-  Twitter,
   GitHub,
+  Twitter,
+  Bluesky,
   Note,
-  Medium,
   ArrowTopRightOnSquare,
 } from '@/app/icons'
 import {
   SITE_NAME,
   PROFILE_NAME,
   PROFILE_BIO,
-  TWITTER_HANDLE,
   GITHUB_HANDLE,
+  TWITTER_HANDLE,
+  BLUESKY_HANDLE,
   NOTE_HANDLE,
-  MEDIUM_HANDLE,
 } from '@/utils/constants'
 import { ModeToggle } from '@/components/mode-toggle'
 
@@ -60,6 +60,18 @@ export default function RootPage() {
 
             <div className="space-y-2">
               <a
+                href={`https://github.com/${GITHUB_HANDLE}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between rounded-md border border-slate-200 p-4 hover:bg-slate-100 dark:border-slate-700 dark:hover:bg-slate-800"
+              >
+                <div className="flex items-center space-x-3">
+                  <GitHub />
+                  <span>GitHub</span>
+                </div>
+                <ArrowTopRightOnSquare />
+              </a>
+              <a
                 href={`https://twitter.com/${TWITTER_HANDLE}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -72,14 +84,14 @@ export default function RootPage() {
                 <ArrowTopRightOnSquare />
               </a>
               <a
-                href={`https://github.com/${GITHUB_HANDLE}`}
+                href={`https://bsky.app/profile/${BLUESKY_HANDLE}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-between rounded-md border border-slate-200 p-4 hover:bg-slate-100 dark:border-slate-700 dark:hover:bg-slate-800"
               >
                 <div className="flex items-center space-x-3">
-                  <GitHub />
-                  <span>GitHub</span>
+                  <Bluesky />
+                  <span>Bluesky</span>
                 </div>
                 <ArrowTopRightOnSquare />
               </a>
@@ -95,18 +107,6 @@ export default function RootPage() {
                 </div>
                 <ArrowTopRightOnSquare />
               </a>
-              {/* <a
-                href={`https://medium.com/@${MEDIUM_HANDLE}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between rounded-md border border-slate-200 p-4 hover:bg-slate-100 dark:border-slate-700 dark:hover:bg-slate-800"
-              >
-                <div className="flex items-center space-x-3">
-                  <Medium />
-                  <span>Medium</span>
-                </div>
-                <ArrowTopRightOnSquare />
-              </a> */}
             </div>
 
             <div className="mt-4 flex items-center justify-between border-t border-slate-200 pt-4 dark:border-slate-800">
