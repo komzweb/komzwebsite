@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://komzweb.net'
+export const SITE_URL = 'https://komzwebsite.vercel.app'
 export const SITE_NAME = 'KOMZ WEB'
 
 export const PROFILE_NAME = 'komz'
